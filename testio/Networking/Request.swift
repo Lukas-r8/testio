@@ -16,30 +16,30 @@ enum HTTPMethod: String {
 
 protocol Request {
     var method: HTTPMethod { get }
-    var queryParams: [URLQueryItem] { get }
-    var body: Data? { get }
     var path: String { get }
+    func configure(_ urlRequest: inout URLRequest)
 }
 
-extension Request {
+struct GetRequest: Request {
+    let method: HTTPMethod = .get
+    let path: String
+    let queryParams: [URLQueryItem] = []
+
     func configure(_ urlRequest: inout URLRequest) {
         urlRequest.httpMethod = method.rawValue
-        urlRequest.httpBody = body
         urlRequest.url?.append(path: path)
         urlRequest.url?.append(queryItems: queryParams)
     }
 }
 
-struct GetRequest: Request {
-    var method: HTTPMethod { .get }
-    let queryParams: [URLQueryItem] = []
-    let body: Data? = nil
-    let path: String
-}
-
 struct PostRequest: Request {
     var method: HTTPMethod { .post }
-    var queryParams: [URLQueryItem] = []
     var body: Data?
     var path: String
+
+    func configure(_ urlRequest: inout URLRequest) {
+        urlRequest.httpMethod = method.rawValue
+        urlRequest.url?.append(path: path)
+        urlRequest.httpBody = body
+    }
 }

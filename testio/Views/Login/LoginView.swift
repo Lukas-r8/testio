@@ -19,8 +19,8 @@ struct LoginView: View {
                 .textInputAutocapitalization(.never)
                 .padding(.horizontal)
 
-            makeTextField(text: $viewModel.password, icon: .lock, placeholder: "Password")
-                .textInputAutocapitalization(.never)
+            makeTextField(text: $viewModel.password, icon: .lock, placeholder: "Password", secure: true)
+
                 .padding(.horizontal)
 
             Button("Log in") {
@@ -41,11 +41,18 @@ struct LoginView: View {
 
 private extension LoginView {
     @ViewBuilder
-    func makeTextField(text: Binding<String>, icon: Image, placeholder: String) -> some View {
+    func makeTextField(text: Binding<String>, icon: Image, placeholder: String, secure: Bool = false) -> some View {
         HStack {
             icon
-            TextField(text: text, prompt: Text(placeholder), label: { EmptyView() })
+            if secure {
+                SecureField(text: text, prompt: Text(placeholder), label: { EmptyView() })
+            } else {
+                TextField(text: text, prompt: Text(placeholder), label: { EmptyView() })
+            }
+
         }
+        .textInputAutocapitalization(.never)
+        .autocorrectionDisabled(true)
         .padding(5)
         .background(content: { Color.lightGray })
         .clipShape(RoundedRectangle(cornerRadius: 10))

@@ -12,20 +12,20 @@ final class APIClient {
     private var token: String = ""
 
     func send<T: Codable>(_ request: Request) async throws -> T {
-        guard var url = URL(string: baseUrl + request.path) else { throw NetworkError.badRequest  }
-        url.append(queryItems: request.queryParams)
+        guard let url = URL(string: baseUrl) else { throw NetworkError.badRequest  }
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.httpBody = request.body
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        if let error = sanitise(response: response) { throw error }
+        request.configure(&urlRequest)
 
         do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            if let error = check(response) { throw error }
             return try JSONDecoder().decode(T.self, from: data)
+        } catch let error as NetworkError {
+            throw error
         } catch {
-            throw NetworkError.unknown(description: "Could not parse")
+            throw NetworkError.unknown(description: error.localizedDescription)
         }
     }
 
@@ -35,7 +35,7 @@ final class APIClient {
 }
 
 private extension APIClient {
-    func sanitise(response: URLResponse) -> NetworkError? {
+    func check(_ response: URLResponse) -> NetworkError? {
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return nil }
         switch statusCode {
         case 401: return .unauthorized
