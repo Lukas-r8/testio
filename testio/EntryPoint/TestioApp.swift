@@ -9,12 +9,11 @@ import SwiftUI
 
 @main
 struct TestioApp: App {
-    let persistenceController = PersistenceController.shared
+    let application = Application()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RootView()
         }
     }
 }

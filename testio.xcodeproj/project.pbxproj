@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C6CBC7D29833BC60047A432 /* TestioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC7C29833BC60047A432 /* TestioApp.swift */; };
-		4C6CBC7F29833BC60047A432 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC7E29833BC60047A432 /* ContentView.swift */; };
+		4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC7E29833BC60047A432 /* RootView.swift */; };
 		4C6CBC8129833BC90047A432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8029833BC90047A432 /* Assets.xcassets */; };
 		4C6CBC8429833BC90047A432 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8329833BC90047A432 /* Preview Assets.xcassets */; };
 		4C6CBC8629833BC90047A432 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8529833BC90047A432 /* Persistence.swift */; };
@@ -24,7 +24,15 @@
 		4C6CBCBF29834A050047A432 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCBE29834A050047A432 /* KeyChain.swift */; };
 		4C6CBCC629834F370047A432 /* ServerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCC429834F370047A432 /* ServerEntity.swift */; };
 		4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCC92983526B0047A432 /* DataSourceContainer.swift */; };
-		4C6CBCCD2983545C0047A432 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCCC2983545C0047A432 /* Networking.swift */; };
+		4C6CBCCD2983545C0047A432 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCCC2983545C0047A432 /* NetworkService.swift */; };
+		4C6CBCCF298433260047A432 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCCE298433260047A432 /* Application.swift */; };
+		4C6CBCD1298433A40047A432 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD0298433A40047A432 /* APIClient.swift */; };
+		4C6CBCD329843CBE0047A432 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD229843CBE0047A432 /* NetworkError.swift */; };
+		4C6CBCD52984509F0047A432 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD42984509F0047A432 /* Request.swift */; };
+		4C6CBCD829845D440047A432 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD729845D440047A432 /* Server.swift */; };
+		4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD929845D800047A432 /* AuthResponse.swift */; };
+		4C6CBCDC298464E70047A432 /* ServerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCDB298464E70047A432 /* ServerListViewModel.swift */; };
+		4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCDD298465630047A432 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +55,7 @@
 /* Begin PBXFileReference section */
 		4C6CBC7929833BC60047A432 /* testio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6CBC7C29833BC60047A432 /* TestioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestioApp.swift; sourceTree = "<group>"; };
-		4C6CBC7E29833BC60047A432 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4C6CBC7E29833BC60047A432 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		4C6CBC8029833BC90047A432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6CBC8329833BC90047A432 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C6CBC8529833BC90047A432 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -65,7 +73,15 @@
 		4C6CBCBE29834A050047A432 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		4C6CBCC429834F370047A432 /* ServerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEntity.swift; sourceTree = "<group>"; };
 		4C6CBCC92983526B0047A432 /* DataSourceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceContainer.swift; sourceTree = "<group>"; };
-		4C6CBCCC2983545C0047A432 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		4C6CBCCC2983545C0047A432 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4C6CBCCE298433260047A432 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		4C6CBCD0298433A40047A432 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4C6CBCD229843CBE0047A432 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		4C6CBCD42984509F0047A432 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		4C6CBCD729845D440047A432 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		4C6CBCD929845D800047A432 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		4C6CBCDB298464E70047A432 /* ServerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewModel.swift; sourceTree = "<group>"; };
+		4C6CBCDD298465630047A432 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +132,11 @@
 		4C6CBC7B29833BC60047A432 /* testio */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCAC29833C2C0047A432 /* EntryPoint */,
 				4C6CBCCB2983543D0047A432 /* Networking */,
 				4C6CBCB329833F520047A432 /* Model */,
 				4C6CBCB229833F350047A432 /* Persistence */,
 				4C6CBCB129833F1E0047A432 /* Resources */,
-				4C6CBCAC29833C2C0047A432 /* EntryPoint */,
 				4C6CBCAB29833C100047A432 /* Views */,
 				4C6CBC8229833BC90047A432 /* Preview Content */,
 			);
@@ -167,7 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBC7C29833BC60047A432 /* TestioApp.swift */,
-				4C6CBC7E29833BC60047A432 /* ContentView.swift */,
+				4C6CBC7E29833BC60047A432 /* RootView.swift */,
+				4C6CBCCE298433260047A432 /* Application.swift */,
 			);
 			path = EntryPoint;
 			sourceTree = "<group>";
@@ -175,6 +192,7 @@
 		4C6CBCAD29833E650047A432 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCDD298465630047A432 /* LoginViewModel.swift */,
 				4C6CBCB629833FD10047A432 /* LoginView.swift */,
 			);
 			path = Login;
@@ -183,6 +201,7 @@
 		4C6CBCAE29833E7B0047A432 /* Servers */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCDB298464E70047A432 /* ServerListViewModel.swift */,
 				4C6CBCAF29833EBE0047A432 /* ServerListView.swift */,
 			);
 			path = Servers;
@@ -211,6 +230,7 @@
 		4C6CBCB329833F520047A432 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCD629845D370047A432 /* Entities */,
 				4C6CBCBA298349BD0047A432 /* ServerDataSource.swift */,
 				4C6CBCBC298349CA0047A432 /* AuthenticationDataSource.swift */,
 				4C6CBCC92983526B0047A432 /* DataSourceContainer.swift */,
@@ -243,9 +263,21 @@
 		4C6CBCCB2983543D0047A432 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				4C6CBCCC2983545C0047A432 /* Networking.swift */,
+				4C6CBCCC2983545C0047A432 /* NetworkService.swift */,
+				4C6CBCD0298433A40047A432 /* APIClient.swift */,
+				4C6CBCD229843CBE0047A432 /* NetworkError.swift */,
+				4C6CBCD42984509F0047A432 /* Request.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		4C6CBCD629845D370047A432 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCD729845D440047A432 /* Server.swift */,
+				4C6CBCD929845D800047A432 /* AuthResponse.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,18 +411,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6CBCC629834F370047A432 /* ServerEntity.swift in Sources */,
+				4C6CBCD329843CBE0047A432 /* NetworkError.swift in Sources */,
 				4C6CBCB9298347D70047A432 /* Repository.swift in Sources */,
 				4C6CBCB729833FD10047A432 /* LoginView.swift in Sources */,
-				4C6CBCCD2983545C0047A432 /* Networking.swift in Sources */,
+				4C6CBCCD2983545C0047A432 /* NetworkService.swift in Sources */,
 				4C6CBC8629833BC90047A432 /* Persistence.swift in Sources */,
 				4C6CBCBB298349BD0047A432 /* ServerDataSource.swift in Sources */,
+				4C6CBCDC298464E70047A432 /* ServerListViewModel.swift in Sources */,
+				4C6CBCD52984509F0047A432 /* Request.swift in Sources */,
 				4C6CBCBD298349CA0047A432 /* AuthenticationDataSource.swift in Sources */,
 				4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */,
+				4C6CBCD1298433A40047A432 /* APIClient.swift in Sources */,
+				4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */,
+				4C6CBCCF298433260047A432 /* Application.swift in Sources */,
 				4C6CBCB029833EBE0047A432 /* ServerListView.swift in Sources */,
-				4C6CBC7F29833BC60047A432 /* ContentView.swift in Sources */,
+				4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */,
 				4C6CBCBF29834A050047A432 /* KeyChain.swift in Sources */,
 				4C6CBC7D29833BC60047A432 /* TestioApp.swift in Sources */,
+				4C6CBCD829845D440047A432 /* Server.swift in Sources */,
 				4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */,
+				4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
