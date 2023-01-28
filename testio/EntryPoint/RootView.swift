@@ -12,7 +12,7 @@ final class RootCoordinator: ObservableObject {
 
     private let dataSourceContainer: DataSourceContainer
     lazy var loginViewModel = LoginViewModel(authenticationDataSource: dataSourceContainer.getAuthenticationDataSource())
-    lazy var serverListViewModel = ServerLis
+    lazy var serverListViewModel = ServerListViewModel(serverDataSource: dataSourceContainer.getServerDataSource())
 
     init(dataSourceContainer: DataSourceContainer) {
         self.dataSourceContainer = dataSourceContainer
@@ -24,9 +24,9 @@ struct RootView: View {
 
     var body: some View {
         if coordinator.isAuthenticated {
-            ServerListView()
+            ServerListView(viewModel: coordinator.serverListViewModel)
         } else {
-            LoginView()
+            LoginView(viewModel: coordinator.loginViewModel)
         }
     }
 }

@@ -13,7 +13,7 @@ struct TestioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            RootView(coordinator: application.rootCoordinator)
         }
     }
 }

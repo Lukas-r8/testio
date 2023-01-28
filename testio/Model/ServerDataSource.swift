@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class ServerDataSource {
+protocol ServerDataSourcing {
+    func fetchList() async throws -> [Server]
+}
+
+final class ServerDataSource: ServerDataSourcing {
     private let networkServicing: NetworkServicing
 
     init(networkServicing: NetworkServicing) {

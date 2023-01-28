@@ -21,6 +21,15 @@ protocol Request {
     var path: String { get }
 }
 
+extension Request {
+    func configure(_ urlRequest: inout URLRequest) {
+        urlRequest.httpMethod = method.rawValue
+        urlRequest.httpBody = body
+        urlRequest.url?.append(path: path)
+        urlRequest.url?.append(queryItems: queryParams)
+    }
+}
+
 struct GetRequest: Request {
     var method: HTTPMethod { .get }
     let queryParams: [URLQueryItem] = []

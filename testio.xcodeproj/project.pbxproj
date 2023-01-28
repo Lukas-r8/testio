@@ -33,6 +33,10 @@
 		4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCD929845D800047A432 /* AuthResponse.swift */; };
 		4C6CBCDC298464E70047A432 /* ServerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCDB298464E70047A432 /* ServerListViewModel.swift */; };
 		4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCDD298465630047A432 /* LoginViewModel.swift */; };
+		4C6CBCE12985A3820047A432 /* Image+Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE02985A3820047A432 /* Image+Asset.swift */; };
+		4C6CBCE32985A3970047A432 /* View+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE22985A3970047A432 /* View+Presentation.swift */; };
+		4C6CBCE62985AEC40047A432 /* Button+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE52985AEC40047A432 /* Button+Styles.swift */; };
+		4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE72985B38C0047A432 /* Color+Custom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		4C6CBCD929845D800047A432 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		4C6CBCDB298464E70047A432 /* ServerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewModel.swift; sourceTree = "<group>"; };
 		4C6CBCDD298465630047A432 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4C6CBCE02985A3820047A432 /* Image+Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Asset.swift"; sourceTree = "<group>"; };
+		4C6CBCE22985A3970047A432 /* View+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Presentation.swift"; sourceTree = "<group>"; };
+		4C6CBCE52985AEC40047A432 /* Button+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Styles.swift"; sourceTree = "<group>"; };
+		4C6CBCE72985B38C0047A432 /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,8 @@
 		4C6CBC7B29833BC60047A432 /* testio */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCE42985AEAD0047A432 /* Styles */,
+				4C6CBCDF2985A3680047A432 /* Extensions */,
 				4C6CBCAC29833C2C0047A432 /* EntryPoint */,
 				4C6CBCCB2983543D0047A432 /* Networking */,
 				4C6CBCB329833F520047A432 /* Model */,
@@ -280,6 +290,24 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		4C6CBCDF2985A3680047A432 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCE02985A3820047A432 /* Image+Asset.swift */,
+				4C6CBCE22985A3970047A432 /* View+Presentation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C6CBCE42985AEAD0047A432 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCE52985AEC40047A432 /* Button+Styles.swift */,
+				4C6CBCE72985B38C0047A432 /* Color+Custom.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,16 +448,20 @@
 				4C6CBCDC298464E70047A432 /* ServerListViewModel.swift in Sources */,
 				4C6CBCD52984509F0047A432 /* Request.swift in Sources */,
 				4C6CBCBD298349CA0047A432 /* AuthenticationDataSource.swift in Sources */,
+				4C6CBCE12985A3820047A432 /* Image+Asset.swift in Sources */,
 				4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */,
 				4C6CBCD1298433A40047A432 /* APIClient.swift in Sources */,
 				4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */,
 				4C6CBCCF298433260047A432 /* Application.swift in Sources */,
+				4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */,
 				4C6CBCB029833EBE0047A432 /* ServerListView.swift in Sources */,
 				4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */,
+				4C6CBCE62985AEC40047A432 /* Button+Styles.swift in Sources */,
 				4C6CBCBF29834A050047A432 /* KeyChain.swift in Sources */,
 				4C6CBC7D29833BC60047A432 /* TestioApp.swift in Sources */,
 				4C6CBCD829845D440047A432 /* Server.swift in Sources */,
 				4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */,
+				4C6CBCE32985A3970047A432 /* View+Presentation.swift in Sources */,
 				4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

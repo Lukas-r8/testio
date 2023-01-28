@@ -8,14 +8,16 @@
 import Foundation
 
 final class LoginViewModel: ObservableObject {
-    private let authenticationDataSource: AuthenticationDataSource
+    private let authenticationDataSource: AuthenticationDataSourcing
 
     @Published var username: String = ""
     @Published var password: String = ""
 
+    var isLoginActive: Bool { !username.isEmpty && !password.isEmpty }
+
     @Published var errorMessage: String?
 
-    init(authenticationDataSource: AuthenticationDataSource) {
+    init(authenticationDataSource: AuthenticationDataSourcing) {
         self.authenticationDataSource = authenticationDataSource
     }
 
@@ -23,7 +25,9 @@ final class LoginViewModel: ObservableObject {
         do {
             try await authenticationDataSource.authenticate(username: username, password: password)
         } catch {
-            self.errorMessage = error.localizedDescription
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
 }

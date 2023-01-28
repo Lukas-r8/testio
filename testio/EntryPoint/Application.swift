@@ -7,10 +7,32 @@
 
 import Foundation
 
+final class TokenRepository: Repository {
+    func fetch<T>() throws -> T where T : Persistable {
+        fatalError()
+    }
+
+    func save<T>(_ item: T) throws where T : Persistable {
+        fatalError()
+    }
+
+    func delete<T>(_ item: T) throws where T : Persistable {
+        fatalError()
+    }
+
+    func update<T>(_ transform: (T) -> Void) throws where T : Persistable {
+        fatalError()
+    }
+}
+
 final class Application {
     let dataSourceContainer: DataSourceContainer
+    let rootCoordinator: RootCoordinator
 
-    init(networkService: NetworkService) {
-        dataSourceContainer = DataSourceContainer(networkService: networkService)
+    init() {
+        let networkService = NetworkService(tokenRepository: TokenRepository())
+        self.dataSourceContainer = DataSourceContainer(networkService: networkService)
+
+        self.rootCoordinator = RootCoordinator(dataSourceContainer: self.dataSourceContainer)
     }
 }

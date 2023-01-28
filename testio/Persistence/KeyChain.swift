@@ -11,18 +11,18 @@ final class KeyChain: Repository {
 
 
     func fetch<T: Persistable>() throws -> T {
-        <#code#>
+        fatalError()
     }
 
     func save<T: Persistable>(_ item: T) throws {
-        <#code#>
+        fatalError()
     }
 
     func delete<T: Persistable>(_ item: T) throws {
-        <#code#>
+        fatalError()
     }
 
     func update<T: Persistable>(_ transform: (T) -> Void) throws {
-        <#code#>
+        fatalError()
     }
 }

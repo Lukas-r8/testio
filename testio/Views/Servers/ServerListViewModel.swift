@@ -8,13 +8,15 @@
 import Foundation
 
 final class ServerListViewModel: ObservableObject {
-    private let serverDataSource: ServerDataSource
+    private let serverDataSource: ServerDataSourcing
 
-    init(serverDataSource: ServerDataSource) {
+    @Published var serverList: [Server] = []
+
+    init(serverDataSource: ServerDataSourcing) {
         self.serverDataSource = serverDataSource
     }
 
     func fetch() async {
-        try! await serverDataSource.fetchList()
+        self.serverList = try! await serverDataSource.fetchList()
     }
 }

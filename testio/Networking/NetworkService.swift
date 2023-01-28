@@ -13,16 +13,16 @@ protocol NetworkServicing {
 
 final class NetworkService {
     let apiClient = APIClient()
-    let tokenRepository
+    let tokenRepository: Repository
 
     init(tokenRepository: Repository) {
-        
+        self.tokenRepository = tokenRepository
     }
 }
 
 extension NetworkService: NetworkServicing {
     func fetch<T: Codable>(_ request: Request) async throws -> T {
-        apiClient.setToken("token")
+//        apiClient.setToken("token")
         return try await apiClient.send(request)
     }
 }

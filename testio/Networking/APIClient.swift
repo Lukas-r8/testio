@@ -16,14 +16,16 @@ final class APIClient {
         url.append(queryItems: request.queryParams)
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.httpBody = request.body
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        if let error = sanitise(response: response) { throw error }
+
         do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
-            if let error = sanitise(reponse: response) { throw error }
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
-            throw NetworkError.unknown(error: error)
+            throw NetworkError.unknown(description: "Could not parse")
         }
     }
 
@@ -33,7 +35,11 @@ final class APIClient {
 }
 
 private extension APIClient {
-    func sanitise(reponse: URLResponse) -> NetworkError? {
-        .badRequest
+    func sanitise(response: URLResponse) -> NetworkError? {
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return nil }
+        switch statusCode {
+        case 401: return .unauthorized
+        default: return nil
+        }
     }
 }
