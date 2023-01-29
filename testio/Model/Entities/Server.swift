@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Server: Codable {
+struct Server: Persistable {
     let name: String
     let distance: Int
 }

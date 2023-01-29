@@ -20,8 +20,8 @@ final class RootCoordinator: ObservableObject {
         self.authenticationDataSource = dataSourceContainer.getAuthenticationDataSource()
         self.dataSourceContainer = dataSourceContainer
 
-        authenticationDataSource
-            .authReponse.map { !$0.token.isEmpty }
+        authenticationDataSource.authReponse
+            .map { $0 != nil }
             .receive(on: DispatchQueue.main)
             .assign(to: &$isAuthenticated)
     }

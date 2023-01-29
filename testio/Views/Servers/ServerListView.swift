@@ -34,44 +34,47 @@ struct ServerListView: View {
         .task {
             await viewModel.fetch()
         }
+        .refreshable {
+            await viewModel.refresh()
+        }
     }
 }
 
-struct MyPreviewProvider_Previews: PreviewProvider {
-    static var previews: some View {
-        ServerListView(viewModel: mockServerViewModel)
-    }
-}
-
-let mockServerViewModel = ServerListViewModel(serverDataSource: MockServerDataSource())
-
-struct MockServerDataSource: ServerDataSourcing {
-    func fetchList() async throws -> [Server] {
-        [Server(name: "Server 1", distance: 1343),
-         Server(name: "Server 2", distance: 455),
-         Server(name: "Server 3", distance: 123),
-         Server(name: "Server 4", distance: 1983),
-         Server(name: "Server 5", distance: 28947),
-         Server(name: "Server 6", distance: 134),
-         Server(name: "Server 1", distance: 1343),
-         Server(name: "Server 2", distance: 455),
-         Server(name: "Server 3", distance: 123),
-         Server(name: "Server 4", distance: 1983),
-         Server(name: "Server 5", distance: 28947),
-         Server(name: "Server 6", distance: 134),
-         Server(name: "Server 1", distance: 1343),
-         Server(name: "Server 2", distance: 455),
-         Server(name: "Server 3", distance: 123),
-         Server(name: "Server 4", distance: 1983),
-         Server(name: "Server 5", distance: 28947),
-         Server(name: "Server 6", distance: 134),
-         Server(name: "Server 5", distance: 28947),
-         Server(name: "Server 6", distance: 134),
-         Server(name: "Server 1", distance: 1343),
-         Server(name: "Server 2", distance: 455),
-         Server(name: "Server 3", distance: 123),
-         Server(name: "Server 4", distance: 1983),
-         Server(name: "Server 5", distance: 28947),
-         Server(name: "Server 6", distance: 134)]
-    }
-}
+//struct MyPreviewProvider_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ServerListView(viewModel: mockServerViewModel)
+//    }
+//}
+//
+//let mockServerViewModel = ServerListViewModel(serverDataSource: MockServerDataSource())
+//
+//struct MockServerDataSource: ServerDataSourcing {
+//    func fetchList() async throws -> [Server] {
+//        [Server(name: "Server 1", distance: 1343),
+//         Server(name: "Server 2", distance: 455),
+//         Server(name: "Server 3", distance: 123),
+//         Server(name: "Server 4", distance: 1983),
+//         Server(name: "Server 5", distance: 28947),
+//         Server(name: "Server 6", distance: 134),
+//         Server(name: "Server 1", distance: 1343),
+//         Server(name: "Server 2", distance: 455),
+//         Server(name: "Server 3", distance: 123),
+//         Server(name: "Server 4", distance: 1983),
+//         Server(name: "Server 5", distance: 28947),
+//         Server(name: "Server 6", distance: 134),
+//         Server(name: "Server 1", distance: 1343),
+//         Server(name: "Server 2", distance: 455),
+//         Server(name: "Server 3", distance: 123),
+//         Server(name: "Server 4", distance: 1983),
+//         Server(name: "Server 5", distance: 28947),
+//         Server(name: "Server 6", distance: 134),
+//         Server(name: "Server 5", distance: 28947),
+//         Server(name: "Server 6", distance: 134),
+//         Server(name: "Server 1", distance: 1343),
+//         Server(name: "Server 2", distance: 455),
+//         Server(name: "Server 3", distance: 123),
+//         Server(name: "Server 4", distance: 1983),
+//         Server(name: "Server 5", distance: 28947),
+//         Server(name: "Server 6", distance: 134)]
+//    }
+//}

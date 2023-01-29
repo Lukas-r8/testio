@@ -11,18 +11,23 @@ protocol NetworkServicing {
     func fetch<T: Codable>(_ request: Request) async throws -> T
 }
 
-final class NetworkService {
-    let apiClient = APIClient()
-    let tokenRepository: Repository
+final class NetworkService<AuthRepo: Repository> where AuthRepo.Element == AuthResponse? {
+    private let apiClient = APIClient()
+    private let authRepository: AuthRepo
 
-    init(tokenRepository: Repository) {
-        self.tokenRepository = tokenRepository
+    private var auth: AuthResponse?
+
+    init(authRepository: AuthRepo) {
+        self.authRepository = authRepository
     }
 }
 
 extension NetworkService: NetworkServicing {
     func fetch<T: Codable>(_ request: Request) async throws -> T {
-//        apiClient.setToken("token")
+        if let authResponse = try? await authRepository.fetch() {
+            apiClient.setToken(authResponse.token)
+        }
+
         return try await apiClient.send(request)
     }
 }

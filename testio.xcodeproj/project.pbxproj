@@ -11,7 +11,7 @@
 		4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC7E29833BC60047A432 /* RootView.swift */; };
 		4C6CBC8129833BC90047A432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8029833BC90047A432 /* Assets.xcassets */; };
 		4C6CBC8429833BC90047A432 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8329833BC90047A432 /* Preview Assets.xcassets */; };
-		4C6CBC8629833BC90047A432 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8529833BC90047A432 /* Persistence.swift */; };
+		4C6CBC8629833BC90047A432 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8529833BC90047A432 /* CoreDataStack.swift */; };
 		4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8729833BC90047A432 /* testio.xcdatamodeld */; };
 		4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC9229833BCA0047A432 /* testioTests.swift */; };
 		4C6CBC9D29833BCA0047A432 /* testioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC9C29833BCA0047A432 /* testioUITests.swift */; };
@@ -37,6 +37,9 @@
 		4C6CBCE32985A3970047A432 /* View+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE22985A3970047A432 /* View+Presentation.swift */; };
 		4C6CBCE62985AEC40047A432 /* Button+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE52985AEC40047A432 /* Button+Styles.swift */; };
 		4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCE72985B38C0047A432 /* Color+Custom.swift */; };
+		4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCEA2986CB560047A432 /* KeychainTests.swift */; };
+		4C6CBCEE2986F3C50047A432 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCED2986F3C50047A432 /* AuthRepository.swift */; };
+		4C6CBCF02986F3D60047A432 /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +65,7 @@
 		4C6CBC7E29833BC60047A432 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		4C6CBC8029833BC90047A432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6CBC8329833BC90047A432 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4C6CBC8529833BC90047A432 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		4C6CBC8529833BC90047A432 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		4C6CBC8829833BC90047A432 /* testio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testio.xcdatamodel; sourceTree = "<group>"; };
 		4C6CBC8E29833BCA0047A432 /* testioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6CBC9229833BCA0047A432 /* testioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioTests.swift; sourceTree = "<group>"; };
@@ -90,6 +93,9 @@
 		4C6CBCE22985A3970047A432 /* View+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Presentation.swift"; sourceTree = "<group>"; };
 		4C6CBCE52985AEC40047A432 /* Button+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Styles.swift"; sourceTree = "<group>"; };
 		4C6CBCE72985B38C0047A432 /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
+		4C6CBCEA2986CB560047A432 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		4C6CBCED2986F3C50047A432 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 		4C6CBC9129833BCA0047A432 /* testioTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCE92986CB460047A432 /* Persistence */,
 				4C6CBCB529833F6D0047A432 /* Mocks */,
 				4C6CBCB429833F5F0047A432 /* Model */,
 				4C6CBC9229833BCA0047A432 /* testioTests.swift */,
@@ -229,10 +236,10 @@
 		4C6CBCB229833F350047A432 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				4C6CBCC829834F680047A432 /* Entities */,
-				4C6CBC8529833BC90047A432 /* Persistence.swift */,
-				4C6CBCB8298347D70047A432 /* Repository.swift */,
 				4C6CBCBE29834A050047A432 /* KeyChain.swift */,
+				4C6CBC8529833BC90047A432 /* CoreDataStack.swift */,
+				4C6CBCEC2986F2AB0047A432 /* Repositories */,
+				4C6CBCC829834F680047A432 /* Entities */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -306,6 +313,24 @@
 				4C6CBCE72985B38C0047A432 /* Color+Custom.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		4C6CBCE92986CB460047A432 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCEA2986CB560047A432 /* KeychainTests.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		4C6CBCEC2986F2AB0047A432 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCB8298347D70047A432 /* Repository.swift */,
+				4C6CBCED2986F3C50047A432 /* AuthRepository.swift */,
+				4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,10 +468,12 @@
 				4C6CBCB9298347D70047A432 /* Repository.swift in Sources */,
 				4C6CBCB729833FD10047A432 /* LoginView.swift in Sources */,
 				4C6CBCCD2983545C0047A432 /* NetworkService.swift in Sources */,
-				4C6CBC8629833BC90047A432 /* Persistence.swift in Sources */,
+				4C6CBC8629833BC90047A432 /* CoreDataStack.swift in Sources */,
 				4C6CBCBB298349BD0047A432 /* ServerDataSource.swift in Sources */,
+				4C6CBCF02986F3D60047A432 /* ServerRepository.swift in Sources */,
 				4C6CBCDC298464E70047A432 /* ServerListViewModel.swift in Sources */,
 				4C6CBCD52984509F0047A432 /* Request.swift in Sources */,
+				4C6CBCEE2986F3C50047A432 /* AuthRepository.swift in Sources */,
 				4C6CBCBD298349CA0047A432 /* AuthenticationDataSource.swift in Sources */,
 				4C6CBCE12985A3820047A432 /* Image+Asset.swift in Sources */,
 				4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */,
@@ -471,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */,
+				4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

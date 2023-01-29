@@ -12,11 +12,26 @@ final class ServerListViewModel: ObservableObject {
 
     @Published var serverList: [Server] = []
 
+    @Published var errorMessage: String?
+
     init(serverDataSource: ServerDataSourcing) {
         self.serverDataSource = serverDataSource
     }
 
     func fetch() async {
-        self.serverList = try! await serverDataSource.fetchList()
+        do {
+            let list = try await serverDataSource.fetchList(forceRefresh: false)
+            await MainActor.run { self.serverList = list }
+        } catch {
+            await MainActor.run { self.errorMessage = error.localizedDescription }
+        }
+    }
+
+    func refresh() async {
+        do {
+            self.serverList = try await serverDataSource.fetchList(forceRefresh: true)
+        } catch {
+            self.errorMessage = error.localizedDescription
+        }
     }
 }

@@ -9,12 +9,12 @@ import Foundation
 
 final class APIClient {
     private let baseUrl = "https://playground.tesonet.lt/v1"
-    private var token: String = ""
+    private var token: String?
 
     func send<T: Codable>(_ request: Request) async throws -> T {
         guard let url = URL(string: baseUrl) else { throw NetworkError.badRequest  }
         var urlRequest = URLRequest(url: url)
-        urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        token.map { urlRequest.addValue("Bearer \($0)", forHTTPHeaderField: "Authorization")  }
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.configure(&urlRequest)
 
@@ -29,7 +29,7 @@ final class APIClient {
         }
     }
 
-    func setToken(_ token: String) {
+    func setToken(_ token: String?) {
         self.token = token
     }
 }

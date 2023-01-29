@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct AuthResponse: Codable {
+struct AuthResponse: SecurelyPersistable {
+    static let uniqueId: String = "testio.credentials.AuthResponse"
     let token: String
 }

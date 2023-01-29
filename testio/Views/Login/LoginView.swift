@@ -60,18 +60,18 @@ private extension LoginView {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(viewModel: mockLoginViewModel)
-    }
-}
-
-let mockLoginViewModel = LoginViewModel(authenticationDataSource: MockAuthenticationDataSource())
-
-struct MockAuthenticationDataSource: AuthenticationDataSourcing {
-    var authReponse: AnyPublisher<AuthResponse, Never> = PassthroughSubject().eraseToAnyPublisher()
-
-    func authenticate(username: String, password: String) async throws {
-
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView(viewModel: mockLoginViewModel)
+//    }
+//}
+//
+//let mockLoginViewModel = LoginViewModel(authenticationDataSource: MockAuthenticationDataSource())
+//
+//struct MockAuthenticationDataSource: AuthenticationDataSourcing {
+//    var authReponse: AnyPublisher<AuthResponse, Never> = PassthroughSubject().eraseToAnyPublisher()
+//
+//    func authenticate(username: String, password: String) async throws {
+//
+//    }
+//}

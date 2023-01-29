@@ -10,8 +10,6 @@ import Foundation
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
 }
 
 protocol Request {
@@ -33,9 +31,9 @@ struct GetRequest: Request {
 }
 
 struct PostRequest: Request {
-    var method: HTTPMethod { .post }
-    var body: Data?
-    var path: String
+    let method: HTTPMethod = .post
+    let body: Data?
+    let path: String
 
     func configure(_ urlRequest: inout URLRequest) {
         urlRequest.httpMethod = method.rawValue
