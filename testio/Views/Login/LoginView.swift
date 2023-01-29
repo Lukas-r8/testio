@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
@@ -68,6 +69,8 @@ struct LoginView_Previews: PreviewProvider {
 let mockLoginViewModel = LoginViewModel(authenticationDataSource: MockAuthenticationDataSource())
 
 struct MockAuthenticationDataSource: AuthenticationDataSourcing {
+    var authReponse: AnyPublisher<AuthResponse, Never> = PassthroughSubject().eraseToAnyPublisher()
+
     func authenticate(username: String, password: String) async throws {
 
     }
