@@ -11,23 +11,8 @@ struct ServerListView<ViewModel: ServerListViewModelInterface>: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .bottom) {
-                Text("SERVER")
-                Spacer()
-                Text("DISTANCE")
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 5)
-
-            List(viewModel.serverList, id: \.name) { (server: Server) in
-                HStack {
-                    Text(server.name)
-                    Spacer()
-                    Text("\(server.distance)")
-                }
-            }
-            .listStyle(.plain)
+        VStack {
+            listContent
         }
         .background { Color.lightGray }
         .navigationTitle("Testio.")
@@ -39,12 +24,31 @@ struct ServerListView<ViewModel: ServerListViewModelInterface>: View {
         .refreshable {
             await viewModel.refresh()
         }
-        .confirmationDialog($viewModel.filterAlert)
-        .alert($viewModel.errorAlert)
     }
 }
 
 private extension ServerListView {
+    var listContent: some View {
+        List {
+            Section(content: {
+                ForEach(viewModel.serverItems) { serverItem in
+                    HStack {
+                        Text(serverItem.name)
+                        Spacer()
+                        Text(serverItem.distance)
+                    }
+                }
+            }, header: {
+                HStack(alignment: .bottom) {
+                    Text("SERVER")
+                    Spacer()
+                    Text("DISTANCE")
+                }
+            })
+        }
+        .listStyle(.plain)
+    }
+
     var filterButton: some View {
         Button {
             viewModel.sort()
@@ -65,6 +69,8 @@ private extension ServerListView {
 }
 
 final class MockViewModel: ServerListViewModelInterface {
+    var serverItems: [ServerListViewModel.ServerItem] = []
+
     var errorAlert: AlertingItem?
 
     var filterAlert: AlertingItem?

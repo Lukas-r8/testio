@@ -8,6 +8,14 @@
 import SwiftUI
 
 extension View {
+    func navigate<Item>(_ item: Binding<Item?>, destination: (Item) -> some View) -> some View {
+        let isPresented = Binding(
+            get: { item.wrappedValue != nil },
+            set: { if !$0 { item.wrappedValue = nil } }
+        )
+        return self.navigationDestination(isPresented: isPresented, destination: { item.wrappedValue.map(destination) })
+    }
+
     func confirmationDialog(_ item: Binding<AlertingItem?>) -> some View {
         let shouldPresentAlert = Binding<Bool>(
             get: { item.wrappedValue != nil },

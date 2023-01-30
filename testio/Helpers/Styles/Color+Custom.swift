@@ -8,5 +8,5 @@
 import SwiftUI
 
 extension Color {
-    static let lightGray = Color(cgColor: #colorLiteral(red: 0.5369650722, green: 0.5381798148, blue: 0.5742650032, alpha: 1))
+    static let lightGray = Color(cgColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
 }

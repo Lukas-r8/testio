@@ -12,11 +12,13 @@ struct RootView: View {
 
     var body: some View {
         NavigationStack {
-            if coordinator.isAuthenticated {
-                ServerListView(viewModel: coordinator.serverListViewModel)
-            } else {
-                LoginView(viewModel: coordinator.loginViewModel)
-            }
+            LoginView(viewModel: coordinator.loginViewModel)
+                .navigate($coordinator.serverListViewModel, destination: { serverListViewModel in
+                    ServerListView(viewModel: serverListViewModel)
+                        .navigationBarBackButtonHidden(true)
+                })
         }
+        .alert($coordinator.alert)
+        .confirmationDialog($coordinator.dialog)
     }
 }

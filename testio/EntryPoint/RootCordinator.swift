@@ -7,21 +7,45 @@
 
 import Foundation
 
+protocol RootNavigator: AnyObject {
+    func present(alert: AlertingItem)
+    func present(dialog: AlertingItem)
+    func loggedOut()
+    func loggedIn()
+}
+
 final class RootCoordinator: ObservableObject {
-    @Published var isAuthenticated: Bool = false
+    @Published var alert: AlertingItem?
+    @Published var dialog: AlertingItem?
 
     private let container: DataSourceContainer
     private let authenticationDataSource: AuthenticationDataSourcing
-    lazy var loginViewModel = LoginViewModel(authenticationDataSource: container.authenticationDataSource)
-    lazy var serverListViewModel: ServerListViewModel = ServerListViewModel(serverDataSource: container.serverDataSource, authenticationDatasource: container.authenticationDataSource)
+
+    lazy var loginViewModel = LoginViewModel(authenticationDataSource: container.authenticationDataSource, navigator: self)
+    var serverListViewModel: ServerListViewModel?
 
     init(dataSourceContainer: DataSourceContainer) {
         self.authenticationDataSource = dataSourceContainer.authenticationDataSource
         self.container = dataSourceContainer
+    }
+}
 
-        authenticationDataSource.authReponse
-            .map { $0 != nil }
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$isAuthenticated)
+extension RootCoordinator: RootNavigator {
+    func loggedOut() {
+        self.serverListViewModel = nil
+    }
+
+    func loggedIn() {
+        self.serverListViewModel = ServerListViewModel(serverDataSource: container.serverDataSource,
+                                                       authenticationDatasource: container.authenticationDataSource,
+                                                       navigator: self)
+    }
+
+    func present(alert: AlertingItem) {
+        self.alert = alert
+    }
+
+    func present(dialog: AlertingItem) {
+        self.dialog = dialog
     }
 }

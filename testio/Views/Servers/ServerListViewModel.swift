@@ -8,9 +8,7 @@
 import Foundation
 
 protocol ServerListViewModelInterface: AnyObject, ObservableObject {
-    var serverList: [Server] { get }
-    var errorAlert: AlertingItem? { get set }
-    var filterAlert: AlertingItem? { get set }
+    var serverItems: [ServerListViewModel.ServerItem] { get }
 
     func sort()
     func logout()
@@ -19,22 +17,28 @@ protocol ServerListViewModelInterface: AnyObject, ObservableObject {
 }
 
 final class ServerListViewModel: ServerListViewModelInterface {
-    private let serverDataSource: ServerDataSourcing
-    private let authenticationDatasource: AuthenticationDataSourcing
-
+    struct ServerItem: Identifiable {
+        let id = UUID()
+        let name: String
+        let distance: String
+    }
     enum SortCriteria {
         case alphabetical
         case distance
     }
+
+    private unowned let navigator: RootNavigator
+    private let serverDataSource: ServerDataSourcing
+    private let authenticationDatasource: AuthenticationDataSourcing
     private var sortCriteria: SortCriteria = .alphabetical
 
-    @Published var serverList: [Server] = []
-    @Published var errorAlert: AlertingItem?
-    @Published var filterAlert: AlertingItem?
+    @Published private var serverList: [Server] = []
+    var serverItems: [ServerItem] { makeServerItem(from: serverList) }
 
-    init(serverDataSource: ServerDataSourcing, authenticationDatasource: AuthenticationDataSourcing) {
+    init(serverDataSource: ServerDataSourcing, authenticationDatasource: AuthenticationDataSourcing, navigator: RootNavigator) {
         self.serverDataSource = serverDataSource
         self.authenticationDatasource = authenticationDatasource
+        self.navigator = navigator
     }
 
     func fetch() async {
@@ -48,12 +52,13 @@ final class ServerListViewModel: ServerListViewModelInterface {
     func sort() {
         let byDistanceAction = AlertingItem.ActionItem(label: "By Distance", action: sortByDistance)
         let alphabeticallyAction = AlertingItem.ActionItem(label: "Alphabetically", action: sortByName)
-        filterAlert = AlertingItem(actionItems: byDistanceAction, alphabeticallyAction)
+        navigator.present(dialog: AlertingItem(actionItems: byDistanceAction, alphabeticallyAction))
     }
 
     func logout() {
         Task {
             try await authenticationDatasource.logout()
+            navigator.loggedOut()
         }
     }
 }
@@ -71,7 +76,13 @@ private extension ServerListViewModel {
             let list = try await serverDataSource.fetchList(forceRefresh: forceRefresh)
             await MainActor.run { self.serverList = sortedFilterList(criteria: sortCriteria, list: list)}
         } catch {
-            await MainActor.run { self.errorAlert = AlertingItem(title: "Error", message: error.localizedDescription) }
+            await MainActor.run { navigator.present(alert: AlertingItem(title: "Error", message: error.localizedDescription)) }
+        }
+    }
+
+    func makeServerItem(from serverList: [Server]) -> [ServerItem] {
+        serverList.map { server in
+            ServerItem(name: server.name, distance: "\(server.distance) km")
         }
     }
 
