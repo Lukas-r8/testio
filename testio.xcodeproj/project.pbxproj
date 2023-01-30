@@ -40,6 +40,7 @@
 		4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCEA2986CB560047A432 /* KeychainTests.swift */; };
 		4C6CBCEE2986F3C50047A432 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCED2986F3C50047A432 /* AuthRepository.swift */; };
 		4C6CBCF02986F3D60047A432 /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */; };
+		4C6CBCF329884BFF0047A432 /* RootCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCF229884BFF0047A432 /* RootCordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		4C6CBCEA2986CB560047A432 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		4C6CBCED2986F3C50047A432 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		4C6CBCF229884BFF0047A432 /* RootCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBC7C29833BC60047A432 /* TestioApp.swift */,
+				4C6CBCF229884BFF0047A432 /* RootCordinator.swift */,
 				4C6CBC7E29833BC60047A432 /* RootView.swift */,
+				4C6CBCC92983526B0047A432 /* DataSourceContainer.swift */,
 				4C6CBCCE298433260047A432 /* Application.swift */,
 			);
 			path = EntryPoint;
@@ -249,7 +253,6 @@
 				4C6CBCD629845D370047A432 /* Entities */,
 				4C6CBCBA298349BD0047A432 /* ServerDataSource.swift */,
 				4C6CBCBC298349CA0047A432 /* AuthenticationDataSource.swift */,
-				4C6CBCC92983526B0047A432 /* DataSourceContainer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */,
 				4C6CBCD1298433A40047A432 /* APIClient.swift in Sources */,
 				4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */,
+				4C6CBCF329884BFF0047A432 /* RootCordinator.swift in Sources */,
 				4C6CBCCF298433260047A432 /* Application.swift in Sources */,
 				4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */,
 				4C6CBCB029833EBE0047A432 /* ServerListView.swift in Sources */,

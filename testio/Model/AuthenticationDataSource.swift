@@ -15,15 +15,19 @@ protocol AuthenticationDataSourcing {
 }
 
 final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSourcing where AuthRepo.Element == AuthResponse? {
+    typealias ClearDatabaseHandler = () async throws -> Void
     private var _response = CurrentValueSubject<AuthResponse?, Never>(nil)
-    var authReponse: AnyPublisher<AuthResponse?, Never> { _response.eraseToAnyPublisher() }
 
     private let networkServicing: NetworkServicing
     private let authRepository: AuthRepo
+    private let clearDatabase: ClearDatabaseHandler
 
-    init(networkServicing: NetworkServicing, authRepository: AuthRepo) {
+    var authReponse: AnyPublisher<AuthResponse?, Never> { _response.eraseToAnyPublisher() }
+
+    init(networkServicing: NetworkServicing, authRepository: AuthRepo, clearDatabase: @escaping ClearDatabaseHandler) {
         self.networkServicing = networkServicing
         self.authRepository = authRepository
+        self.clearDatabase = clearDatabase
 
         Task {
             let authData = try await self.authRepository.fetch()
@@ -40,6 +44,7 @@ final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSo
 
     func logout() async throws {
         try await authRepository.delete(nil)
+        try await clearDatabase()
         _response.send(nil)
     }
 }

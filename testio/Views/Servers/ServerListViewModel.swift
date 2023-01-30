@@ -20,6 +20,7 @@ protocol ServerListViewModelInterface: AnyObject, ObservableObject {
 
 final class ServerListViewModel: ServerListViewModelInterface {
     private let serverDataSource: ServerDataSourcing
+    private let authenticationDatasource: AuthenticationDataSourcing
 
     enum SortCriteria {
         case alphabetical
@@ -31,8 +32,9 @@ final class ServerListViewModel: ServerListViewModelInterface {
     @Published var errorAlert: AlertingItem?
     @Published var filterAlert: AlertingItem?
 
-    init(serverDataSource: ServerDataSourcing) {
+    init(serverDataSource: ServerDataSourcing, authenticationDatasource: AuthenticationDataSourcing) {
         self.serverDataSource = serverDataSource
+        self.authenticationDatasource = authenticationDatasource
     }
 
     func fetch() async {
@@ -50,7 +52,9 @@ final class ServerListViewModel: ServerListViewModelInterface {
     }
 
     func logout() {
-        print("Logging out")
+        Task {
+            try await authenticationDatasource.logout()
+        }
     }
 }
 

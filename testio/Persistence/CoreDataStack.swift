@@ -65,4 +65,13 @@ final class CoreDataStack {
             NSManagedObjectContext.mergeChanges(fromRemoteContextSave: deletedObjects, into: [context])
         }
     }
+
+    func clear() async throws {
+        let persistedEntitiesNames = container.managedObjectModel.entities.compactMap { $0.name }
+        for entityName in persistedEntitiesNames {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            try await delete(batchDeleteRequest, on: mainContext)
+        }
+    }
 }
