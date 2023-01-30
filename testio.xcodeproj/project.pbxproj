@@ -146,8 +146,7 @@
 		4C6CBC7B29833BC60047A432 /* testio */ = {
 			isa = PBXGroup;
 			children = (
-				4C6CBCE42985AEAD0047A432 /* Styles */,
-				4C6CBCDF2985A3680047A432 /* Extensions */,
+				4C6CBCF1298763360047A432 /* Helpers */,
 				4C6CBCAC29833C2C0047A432 /* EntryPoint */,
 				4C6CBCCB2983543D0047A432 /* Networking */,
 				4C6CBCB329833F520047A432 /* Model */,
@@ -331,6 +330,15 @@
 				4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4C6CBCF1298763360047A432 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCE42985AEAD0047A432 /* Styles */,
+				4C6CBCDF2985A3680047A432 /* Extensions */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
