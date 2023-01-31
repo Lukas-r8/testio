@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PrimaryButtonStyle: ButtonStyle {
+    let disabled: Bool
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
@@ -16,9 +17,6 @@ struct PrimaryButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .background(content: { Color.blue })
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .opacity(disabled ? 0.8 : 1)
     }
-}
-
-extension ButtonStyle {
-    static var primary: any ButtonStyle { PrimaryButtonStyle() }
 }

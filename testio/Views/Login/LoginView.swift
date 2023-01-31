@@ -8,10 +8,24 @@
 import SwiftUI
 import Combine
 
-struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+struct LoginView<ViewModel: LoginViewModelInterface>: View {
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
+        ZStack {
+            content
+            if viewModel.loading {
+                LoadingView(text: "Logging in")
+            }
+        }
+        .frame(maxHeight: .infinity)
+        .background(alignment: .bottom, content: { Image.unsplash })
+        .ignoresSafeArea()
+    }
+}
+
+private extension LoginView {
+    var content: some View {
         VStack(spacing: 15) {
             Image.logo
                 .padding()
@@ -29,18 +43,12 @@ struct LoginView: View {
                     await viewModel.login()
                 }
             }
-            .buttonStyle(PrimaryButtonStyle())
+            .buttonStyle(PrimaryButtonStyle(disabled: !viewModel.isLoginActive))
             .padding(.horizontal)
             .disabled(!viewModel.isLoginActive)
-
         }
-        .frame(maxHeight: .infinity)
-        .background(alignment: .bottom, content: { Image.unsplash })
-        .ignoresSafeArea()
     }
-}
 
-private extension LoginView {
     @ViewBuilder
     func makeTextField(text: Binding<String>, icon: Image, placeholder: String, secure: Bool = false) -> some View {
         HStack {
@@ -60,18 +68,17 @@ private extension LoginView {
     }
 }
 
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView(viewModel: mockLoginViewModel)
-//    }
-//}
-//
-//let mockLoginViewModel = LoginViewModel(authenticationDataSource: MockAuthenticationDataSource())
-//
-//struct MockAuthenticationDataSource: AuthenticationDataSourcing {
-//    var authReponse: AnyPublisher<AuthResponse, Never> = PassthroughSubject().eraseToAnyPublisher()
-//
-//    func authenticate(username: String, password: String) async throws {
-//
-//    }
-//}
+final class MockLoginViewModel: LoginViewModelInterface {
+    var username: String = "testing"
+    var password: String = "some password"
+    var loading: Bool = true
+    var isLoginActive: Bool = false
+
+    func login() async { }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(viewModel: MockLoginViewModel())
+    }
+}

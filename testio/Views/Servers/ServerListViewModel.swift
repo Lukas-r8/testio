@@ -9,7 +9,7 @@ import Foundation
 
 protocol ServerListViewModelInterface: AnyObject, ObservableObject {
     var serverItems: [ServerListViewModel.ServerItem] { get }
-
+    var loading: Bool { get }
     func sort()
     func logout()
     func fetch() async
@@ -33,6 +33,8 @@ final class ServerListViewModel: ServerListViewModelInterface {
     private var sortCriteria: SortCriteria = .alphabetical
 
     @Published private var serverList: [Server] = []
+
+    @Published var loading: Bool = false
     var serverItems: [ServerItem] { makeServerItem(from: serverList) }
 
     init(serverDataSource: ServerDataSourcing, authenticationDatasource: AuthenticationDataSourcing, navigator: RootNavigator) {
@@ -74,12 +76,16 @@ private extension ServerListViewModel {
     }
 
     func load(forceRefresh: Bool) async {
+        await MainActor.run { loading = true }
         do {
             let list = try await serverDataSource.fetchList(forceRefresh: forceRefresh)
-            await MainActor.run { self.serverList = sortedFilterList(criteria: sortCriteria, list: list)}
+            await MainActor.run {
+                self.serverList = sortedFilterList(criteria: sortCriteria, list: list)
+            }
         } catch {
             await MainActor.run { navigator.present(alert: AlertingItem(title: "Error", message: error.localizedDescription)) }
         }
+        await MainActor.run { loading = false }
     }
 
     func makeServerItem(from serverList: [Server]) -> [ServerItem] {

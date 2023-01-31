@@ -11,8 +11,11 @@ struct ServerListView<ViewModel: ServerListViewModelInterface>: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
+        ZStack {
             listContent
+            if viewModel.loading {
+                LoadingView(text: "Loading list")
+            }
         }
         .background { Color.lightGray }
         .navigationTitle("Testio.")
@@ -69,7 +72,9 @@ private extension ServerListView {
 }
 
 final class MockViewModel: ServerListViewModelInterface {
-    var serverItems: [ServerListViewModel.ServerItem] = []
+    var loading: Bool = true
+
+    var serverItems: [ServerListViewModel.ServerItem] { serverList.map { ServerListViewModel.ServerItem(name: $0.name, distance: "\($0.distance) km") } }
 
     var errorAlert: AlertingItem?
 

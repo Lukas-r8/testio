@@ -8,32 +8,40 @@
 import SwiftUI
 
 struct LoadingView: View {
+    private enum Constants {
+        static let size: CGFloat = 140
+    }
+
     let text: String?
+
+    init(text: String? = nil) {
+        self.text = text
+    }
+
     var body: some View {
         VStack(alignment: .center) {
-            ProgressView()
-                .padding(.top, 35)
-
             if let text {
-                Spacer()
-                Text(text)
-                    .lineLimit(1)
-                    .padding(.bottom)
-                    .padding(.horizontal, 5)
-                    .foregroundColor(.gray)
+                loadingWithText(text)
+            } else {
+                ProgressView()
             }
         }
-        .frame(width: 120, height: 120, alignment: .center)
+        .frame(width: Constants.size, height: Constants.size, alignment: .center)
         .background {
-            Color.black
-                .opacity(0.1)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+            VisualEffectView(effect: .blurEffect)
+                .opacity(0.8)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
 }
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView(text: nil)
+private extension LoadingView {
+    @ViewBuilder
+    func loadingWithText(_ text: String) -> some View {
+        ProgressView()
+            .padding(.vertical)
+        Text(text)
+            .lineLimit(1)
+            .foregroundColor(.darkGray)
     }
 }

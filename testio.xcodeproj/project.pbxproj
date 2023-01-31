@@ -47,6 +47,7 @@
 		4C6CBCFD29886BF90047A432 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCFC29886BF90047A432 /* PersistenceError.swift */; };
 		4C6CBD02298885BD0047A432 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD01298885BD0047A432 /* ErrorMapper.swift */; };
 		4C6CBD05298894350047A432 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD04298894350047A432 /* LoadingView.swift */; };
+		4C6CBD09298974B80047A432 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD08298974B80047A432 /* VisualEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		4C6CBCFC29886BF90047A432 /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
 		4C6CBD01298885BD0047A432 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
 		4C6CBD04298894350047A432 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		4C6CBD08298974B80047A432 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD04298894350047A432 /* LoadingView.swift */,
+				4C6CBD08298974B80047A432 /* VisualEffectView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				4C6CBCE62985AEC40047A432 /* Button+Styles.swift in Sources */,
 				4C6CBCBF29834A050047A432 /* KeyChain.swift in Sources */,
 				4C6CBD02298885BD0047A432 /* ErrorMapper.swift in Sources */,
+				4C6CBD09298974B80047A432 /* VisualEffectView.swift in Sources */,
 				4C6CBC7D29833BC60047A432 /* TestioApp.swift in Sources */,
 				4C6CBCD829845D440047A432 /* Server.swift in Sources */,
 				4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */,
