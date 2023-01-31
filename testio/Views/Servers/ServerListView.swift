@@ -21,6 +21,7 @@ struct ServerListView<ViewModel: ServerListViewModelInterface>: View {
         .navigationTitle("Testio.")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: filterButton, trailing: logoutButton)
+        .animation(.easeInOut, value: viewModel.serverItems)
         .task {
             await viewModel.fetch()
         }

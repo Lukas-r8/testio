@@ -17,7 +17,7 @@ protocol ServerListViewModelInterface: AnyObject, ObservableObject {
 }
 
 final class ServerListViewModel: ServerListViewModelInterface {
-    struct ServerItem: Identifiable {
+    struct ServerItem: Identifiable, Equatable {
         let id = UUID()
         let name: String
         let distance: String
