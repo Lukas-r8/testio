@@ -27,9 +27,13 @@ final class DataSourceContainer {
 
     var authenticationDataSource: AuthenticationDataSource<AuthRepository> {
         guard let authenticationDataSource = _authenticationDataSource else {
+            let clearDataBase: AuthenticationDataSource.ClearDatabaseHandler = { [weak self] in
+                try await self?.coredataStack.clear()
+                self?.keychain.wipe()
+            }
             let dataSource = AuthenticationDataSource(networkServicing: networkService,
                                                       authRepository: AuthRepository(keychain: keychain),
-                                                      clearDatabase: coredataStack.clear)
+                                                      clearDatabase: clearDataBase)
             _authenticationDataSource = dataSource
             return dataSource
         }

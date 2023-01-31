@@ -52,11 +52,13 @@ final class ServerListViewModel: ServerListViewModelInterface {
     func sort() {
         let byDistanceAction = AlertingItem.ActionItem(label: "By Distance", action: sortByDistance)
         let alphabeticallyAction = AlertingItem.ActionItem(label: "Alphabetically", action: sortByName)
-        navigator.present(dialog: AlertingItem(actionItems: byDistanceAction, alphabeticallyAction))
+        DispatchQueue.main.async {
+            self.navigator.present(dialog: AlertingItem(actionItems: byDistanceAction, alphabeticallyAction))
+        }
     }
 
     func logout() {
-        Task {
+        Task { @MainActor in
             try await authenticationDatasource.logout()
             navigator.loggedOut()
         }

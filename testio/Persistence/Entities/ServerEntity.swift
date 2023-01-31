@@ -14,6 +14,12 @@ final class ServerEntity: NSManagedObject {
         return NSFetchRequest<ServerEntity>(entityName: "ServerEntity")
     }
 
+    static func fetchBy(name: String) -> NSFetchRequest<ServerEntity> {
+        let fetchRequest = fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        return fetchRequest
+    }
+
     static func deleteRequest(for names: [String]) -> NSBatchDeleteRequest {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ServerEntity")
         fetchRequest.predicate = NSPredicate(format: "name IN %@", names)

@@ -41,6 +41,11 @@
 		4C6CBCEE2986F3C50047A432 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCED2986F3C50047A432 /* AuthRepository.swift */; };
 		4C6CBCF02986F3D60047A432 /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */; };
 		4C6CBCF329884BFF0047A432 /* RootCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCF229884BFF0047A432 /* RootCordinator.swift */; };
+		4C6CBCF6298865700047A432 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCF5298865700047A432 /* AppError.swift */; };
+		4C6CBCF929886A1C0047A432 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCF829886A1C0047A432 /* KeychainError.swift */; };
+		4C6CBCFB29886B6B0047A432 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCFA29886B6B0047A432 /* CoreDataError.swift */; };
+		4C6CBCFD29886BF90047A432 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCFC29886BF90047A432 /* PersistenceError.swift */; };
+		4C6CBD02298885BD0047A432 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD01298885BD0047A432 /* ErrorMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +103,11 @@
 		4C6CBCED2986F3C50047A432 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		4C6CBCEF2986F3D60047A432 /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
 		4C6CBCF229884BFF0047A432 /* RootCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCordinator.swift; sourceTree = "<group>"; };
+		4C6CBCF5298865700047A432 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		4C6CBCF829886A1C0047A432 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		4C6CBCFA29886B6B0047A432 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		4C6CBCFC29886BF90047A432 /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
+		4C6CBD01298885BD0047A432 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,10 +249,11 @@
 		4C6CBCB229833F350047A432 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				4C6CBCBE29834A050047A432 /* KeyChain.swift */,
-				4C6CBC8529833BC90047A432 /* CoreDataStack.swift */,
 				4C6CBCEC2986F2AB0047A432 /* Repositories */,
 				4C6CBCC829834F680047A432 /* Entities */,
+				4C6CBCF7298869ED0047A432 /* Errors */,
+				4C6CBCBE29834A050047A432 /* KeyChain.swift */,
+				4C6CBC8529833BC90047A432 /* CoreDataStack.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 		4C6CBCB329833F520047A432 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBCF42988652F0047A432 /* Errors */,
 				4C6CBCD629845D370047A432 /* Entities */,
 				4C6CBCBA298349BD0047A432 /* ServerDataSource.swift */,
 				4C6CBCBC298349CA0047A432 /* AuthenticationDataSource.swift */,
@@ -282,9 +294,9 @@
 		4C6CBCCB2983543D0047A432 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBD0029887B220047A432 /* Errors */,
 				4C6CBCCC2983545C0047A432 /* NetworkService.swift */,
 				4C6CBCD0298433A40047A432 /* APIClient.swift */,
-				4C6CBCD229843CBE0047A432 /* NetworkError.swift */,
 				4C6CBCD42984509F0047A432 /* Request.swift */,
 			);
 			path = Networking;
@@ -342,6 +354,33 @@
 				4C6CBCDF2985A3680047A432 /* Extensions */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C6CBCF42988652F0047A432 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBD01298885BD0047A432 /* ErrorMapper.swift */,
+				4C6CBCF5298865700047A432 /* AppError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		4C6CBCF7298869ED0047A432 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCFC29886BF90047A432 /* PersistenceError.swift */,
+				4C6CBCF829886A1C0047A432 /* KeychainError.swift */,
+				4C6CBCFA29886B6B0047A432 /* CoreDataError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		4C6CBD0029887B220047A432 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBCD229843CBE0047A432 /* NetworkError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,11 +513,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6CBCFD29886BF90047A432 /* PersistenceError.swift in Sources */,
 				4C6CBCC629834F370047A432 /* ServerEntity.swift in Sources */,
 				4C6CBCD329843CBE0047A432 /* NetworkError.swift in Sources */,
 				4C6CBCB9298347D70047A432 /* Repository.swift in Sources */,
 				4C6CBCB729833FD10047A432 /* LoginView.swift in Sources */,
 				4C6CBCCD2983545C0047A432 /* NetworkService.swift in Sources */,
+				4C6CBCFB29886B6B0047A432 /* CoreDataError.swift in Sources */,
 				4C6CBC8629833BC90047A432 /* CoreDataStack.swift in Sources */,
 				4C6CBCBB298349BD0047A432 /* ServerDataSource.swift in Sources */,
 				4C6CBCF02986F3D60047A432 /* ServerRepository.swift in Sources */,
@@ -490,6 +531,7 @@
 				4C6CBCCA2983526B0047A432 /* DataSourceContainer.swift in Sources */,
 				4C6CBCD1298433A40047A432 /* APIClient.swift in Sources */,
 				4C6CBCDA29845D800047A432 /* AuthResponse.swift in Sources */,
+				4C6CBCF929886A1C0047A432 /* KeychainError.swift in Sources */,
 				4C6CBCF329884BFF0047A432 /* RootCordinator.swift in Sources */,
 				4C6CBCCF298433260047A432 /* Application.swift in Sources */,
 				4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */,
@@ -497,10 +539,12 @@
 				4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */,
 				4C6CBCE62985AEC40047A432 /* Button+Styles.swift in Sources */,
 				4C6CBCBF29834A050047A432 /* KeyChain.swift in Sources */,
+				4C6CBD02298885BD0047A432 /* ErrorMapper.swift in Sources */,
 				4C6CBC7D29833BC60047A432 /* TestioApp.swift in Sources */,
 				4C6CBCD829845D440047A432 /* Server.swift in Sources */,
 				4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */,
 				4C6CBCE32985A3970047A432 /* View+Presentation.swift in Sources */,
+				4C6CBCF6298865700047A432 /* AppError.swift in Sources */,
 				4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

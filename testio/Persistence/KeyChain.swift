@@ -7,21 +7,18 @@
 
 import Foundation
 
-enum PersistenceError: Error {
-    case saveFailed
-    case deleteFailed
-    case fetchFailed
-    case notFound
-}
-
 final class Keychain {
     static let `default` = Keychain()
     private let service = "lucas.testio.credentials"
 
-    private init() { }
+    private init() {
+        guard !appHasFirstLaunched else { return }
+        appHasFirstLaunched = true
+        wipe()
+    }
 
     func save<Entity: SecurelyPersistable>(_ entity: Entity) throws {
-        guard let data = try? PropertyListEncoder().encode(entity) else { throw PersistenceError.saveFailed }
+        guard let data = try? PropertyListEncoder().encode(entity) else { throw KeychainError.encodingFailed }
 
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -33,7 +30,7 @@ final class Keychain {
         SecItemDelete(query as CFDictionary)
         let status = SecItemAdd(query as CFDictionary, nil)
 
-        guard status == errSecSuccess else { throw PersistenceError.saveFailed }
+        guard status == errSecSuccess else { throw KeychainError.saveFailed }
     }
 
     func delete<Entity: SecurelyPersistable>(_ entity: Entity.Type) throws {
@@ -46,7 +43,7 @@ final class Keychain {
         let status = SecItemDelete(query as CFDictionary)
 
         guard status == errSecSuccess || status == errSecItemNotFound else {
-            throw PersistenceError.deleteFailed
+            throw KeychainError.deleteFailed
         }
     }
 
@@ -63,11 +60,11 @@ final class Keychain {
         let status = SecItemCopyMatching(query as CFDictionary, &item)
 
         guard status != errSecItemNotFound else {
-            throw PersistenceError.notFound
+            throw KeychainError.notFound
         }
 
         guard let data = item as? Data, status == errSecSuccess else {
-            throw PersistenceError.fetchFailed
+            throw KeychainError.fetchFailed
         }
 
         return try PropertyListDecoder().decode(Entity.self, from: data)
@@ -83,5 +80,14 @@ final class Keychain {
             let dictionary = [kSecClass as String: $0]
             SecItemDelete(dictionary as CFDictionary)
         }
+    }
+}
+
+private extension Keychain {
+    static let appHasFirstLauchedKey = "app_has_first_launched"
+
+    var appHasFirstLaunched: Bool {
+        get { UserDefaults.standard.bool(forKey: Keychain.appHasFirstLauchedKey) }
+        set { UserDefaults.standard.set(newValue, forKey: Keychain.appHasFirstLauchedKey) }
     }
 }

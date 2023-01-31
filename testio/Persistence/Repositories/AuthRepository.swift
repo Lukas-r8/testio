@@ -17,26 +17,14 @@ final class AuthRepository: Repository {
     }
 
     func fetch() throws -> AuthResponse? {
-        do {
-            return try keychain.fetch(AuthResponse.self)
-        } catch {
-            throw PersistenceError.fetchFailed
-        }
+        return try keychain.fetch(AuthResponse.self)
     }
 
     func save(_ item: AuthResponse?) throws  {
-        do {
-            try keychain.save(item)
-        } catch {
-            throw PersistenceError.saveFailed
-        }
+        try keychain.save(item)
     }
 
     func delete(_ item: AuthResponse?) throws {
-        do {
-            try keychain.delete(AuthResponse.self)
-        } catch {
-            throw PersistenceError.deleteFailed
-        }
+        try keychain.delete(AuthResponse.self)
     }
 }

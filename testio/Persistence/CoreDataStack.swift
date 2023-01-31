@@ -37,32 +37,44 @@ final class CoreDataStack {
         }
     }
 
-    func write(_ block: @escaping (NSManagedObjectContext) -> Void, on context: NSManagedObjectContext? = nil) async throws {
+    func write(_ block: @escaping (NSManagedObjectContext) throws -> Void, on context: NSManagedObjectContext? = nil) async throws {
         let context = context ?? mainContext
-        try await context.perform {
-            block(context)
-            try context.save()
+        do {
+            try await context.perform {
+                try block(context)
+                try context.save()
+            }
+        } catch {
+            throw CoreDataError.saveFailed(error.localizedDescription)
         }
     }
 
     func read<Entity, Result>(_ request: NSFetchRequest<Entity>, on context: NSManagedObjectContext? = nil, parse: @escaping (Entity) -> Result) async throws -> [Result] {
         let context = context ?? mainContext
-        return try await context.perform {
-            let fetchResult = try context.fetch(request)
-            return fetchResult.map(parse)
+        do {
+            return try await context.perform {
+                let fetchResult = try context.fetch(request)
+                return fetchResult.map(parse)
+            }
+        } catch {
+            throw CoreDataError.fetchFailed("Could not fetch entity of type \(Entity.self), reason: \(error.localizedDescription)")
         }
     }
 
     func delete(_ batchDeleteRequest: NSBatchDeleteRequest, on context: NSManagedObjectContext? = nil) async throws {
         let context = context ?? mainContext
-        try await context.perform {
-            batchDeleteRequest.resultType = .resultTypeObjectIDs
-            let batchDelete = try context.execute(batchDeleteRequest) as? NSBatchDeleteResult
+        do {
+            try await context.perform {
+                batchDeleteRequest.resultType = .resultTypeObjectIDs
+                let batchDelete = try context.execute(batchDeleteRequest) as? NSBatchDeleteResult
 
-            guard let deleteResult = batchDelete?.result as? [NSManagedObjectID] else { return }
+                guard let deleteResult = batchDelete?.result as? [NSManagedObjectID] else { return }
 
-            let deletedObjects = [NSDeletedObjectsKey: deleteResult]
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: deletedObjects, into: [context])
+                let deletedObjects = [NSDeletedObjectsKey: deleteResult]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: deletedObjects, into: [context])
+            }
+        } catch {
+            throw CoreDataError.deleteFailed(error.localizedDescription)
         }
     }
 
@@ -71,7 +83,11 @@ final class CoreDataStack {
         for entityName in persistedEntitiesNames {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            try await delete(batchDeleteRequest, on: mainContext)
+            do {
+                try await delete(batchDeleteRequest, on: mainContext)
+            } catch {
+                throw CoreDataError.clearFailed
+            }
         }
     }
 }

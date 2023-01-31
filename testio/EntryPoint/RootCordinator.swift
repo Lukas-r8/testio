@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol RootNavigator: AnyObject {
     func present(alert: AlertingItem)
@@ -15,18 +16,25 @@ protocol RootNavigator: AnyObject {
 }
 
 final class RootCoordinator: ObservableObject {
-    @Published var alert: AlertingItem?
-    @Published var dialog: AlertingItem?
-
     private let container: DataSourceContainer
     private let authenticationDataSource: AuthenticationDataSourcing
-
+    private var cancellable: AnyCancellable?
+    @Published var alert: AlertingItem?
+    @Published var dialog: AlertingItem?
+    @Published var serverListViewModel: ServerListViewModel?
     lazy var loginViewModel = LoginViewModel(authenticationDataSource: container.authenticationDataSource, navigator: self)
-    var serverListViewModel: ServerListViewModel?
 
     init(dataSourceContainer: DataSourceContainer) {
         self.authenticationDataSource = dataSourceContainer.authenticationDataSource
         self.container = dataSourceContainer
+
+        cancellable = authenticationDataSource
+            .authReponse
+            .compactMap { $0 != nil ? () : nil }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.loggedIn()
+            }
     }
 }
 

@@ -18,32 +18,20 @@ final class ServerRepository: Repository {
     }
 
     func fetch() async throws -> [Server] {
-        do {
-            return try await stack.read(ServerEntity.fetchRequest()) { Server(name: $0.name, distance: $0.distance) }
-        } catch {
-            throw PersistenceError.fetchFailed
-        }
+        return try await stack.read(ServerEntity.fetchRequest()) { Server(name: $0.name, distance: $0.distance) }
     }
 
     func save(_ item: [Server]) async throws  {
-        do {
-            try await stack.write { context in
-                item.forEach { server in
-                    let serverEntity = ServerEntity(context: context)
-                    serverEntity.name = server.name
-                    serverEntity.distance = server.distance
-                }
+        try await stack.write { context in
+            try item.forEach { server in
+                let serverEntity = try context.fetch(ServerEntity.fetchBy(name: server.name)).first ?? ServerEntity(context: context)
+                serverEntity.name = server.name
+                serverEntity.distance = server.distance
             }
-        } catch {
-            throw PersistenceError.saveFailed
         }
     }
 
     func delete(_ item: [Server]) async throws {
-        do {
-            try await stack.delete(ServerEntity.deleteRequest(for: item.map(\.name)))
-        } catch {
-            throw PersistenceError.deleteFailed
-        }
+        try await stack.delete(ServerEntity.deleteRequest(for: item.map(\.name)))
     }
 }

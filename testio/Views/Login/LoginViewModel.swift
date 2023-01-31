@@ -24,7 +24,7 @@ final class LoginViewModel: ObservableObject {
     func login() async {
         do {
             try await authenticationDataSource.authenticate(username: username, password: password)
-            navigator.loggedIn()
+            await MainActor.run { navigator.loggedIn() }
         } catch {
             await MainActor.run {
                 navigator.present(alert: AlertingItem(title: "Verification Failed", message: error.localizedDescription))

@@ -38,8 +38,12 @@ private extension APIClient {
     func check(_ response: URLResponse) -> NetworkError? {
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return nil }
         switch statusCode {
-        case 401: return .unauthorized
-        default: return nil
+        case 401, 403: return .unauthorized
+        case 400: return .badRequest
+        case 500: return .serverError
+        case 404: return .notFound
+        case 200 ... 299: return nil
+        default: return .unknown(description: response.description)
         }
     }
 }

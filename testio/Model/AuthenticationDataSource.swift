@@ -14,7 +14,7 @@ protocol AuthenticationDataSourcing {
     func logout() async throws
 }
 
-final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSourcing where AuthRepo.Element == AuthResponse? {
+final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSourcing, ErrorMapper where AuthRepo.Element == AuthResponse? {
     typealias ClearDatabaseHandler = () async throws -> Void
     private var _response = CurrentValueSubject<AuthResponse?, Never>(nil)
 
@@ -36,15 +36,23 @@ final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSo
     }
 
     func authenticate(username: String, password: String) async throws {
-        let body = try JSONEncoder().encode(["username": username, "password": password])
-        let response: AuthResponse = try await networkServicing.fetch(PostRequest(body: body, path: "/tokens"))
-        try await authRepository.save(response)
-        _response.send(response)
+        do {
+            let body = try JSONEncoder().encode(["username": username, "password": password])
+            let response: AuthResponse = try await networkServicing.fetch(PostRequest(body: body, path: "/tokens"))
+            try await authRepository.save(response)
+            _response.send(response)
+        } catch {
+            throw mapError(error)
+        }
     }
 
     func logout() async throws {
-        try await authRepository.delete(nil)
-        try await clearDatabase()
-        _response.send(nil)
+        do {
+            try await authRepository.delete(nil)
+            try await clearDatabase()
+            _response.send(nil)
+        } catch {
+            throw mapError(error)
+        }
     }
 }
