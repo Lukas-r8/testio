@@ -46,6 +46,7 @@
 		4C6CBCFB29886B6B0047A432 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCFA29886B6B0047A432 /* CoreDataError.swift */; };
 		4C6CBCFD29886BF90047A432 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCFC29886BF90047A432 /* PersistenceError.swift */; };
 		4C6CBD02298885BD0047A432 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD01298885BD0047A432 /* ErrorMapper.swift */; };
+		4C6CBD05298894350047A432 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD04298894350047A432 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		4C6CBCFA29886B6B0047A432 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		4C6CBCFC29886BF90047A432 /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
 		4C6CBD01298885BD0047A432 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
+		4C6CBD04298894350047A432 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +352,7 @@
 		4C6CBCF1298763360047A432 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBD03298894270047A432 /* Components */,
 				4C6CBCE42985AEAD0047A432 /* Styles */,
 				4C6CBCDF2985A3680047A432 /* Extensions */,
 			);
@@ -381,6 +384,14 @@
 				4C6CBCD229843CBE0047A432 /* NetworkError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		4C6CBD03298894270047A432 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBD04298894350047A432 /* LoadingView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,6 +545,7 @@
 				4C6CBCF929886A1C0047A432 /* KeychainError.swift in Sources */,
 				4C6CBCF329884BFF0047A432 /* RootCordinator.swift in Sources */,
 				4C6CBCCF298433260047A432 /* Application.swift in Sources */,
+				4C6CBD05298894350047A432 /* LoadingView.swift in Sources */,
 				4C6CBCE82985B38C0047A432 /* Color+Custom.swift in Sources */,
 				4C6CBCB029833EBE0047A432 /* ServerListView.swift in Sources */,
 				4C6CBC7F29833BC60047A432 /* RootView.swift in Sources */,
