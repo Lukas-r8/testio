@@ -11,7 +11,7 @@ protocol ServerListViewModelInterface: AnyObject, ObservableObject {
     var serverItems: [ServerListViewModel.ServerItem] { get }
     var loading: Bool { get }
     func sort()
-    func logout()
+    func logout() async
     func fetch() async
     func refresh() async
 }
@@ -31,16 +31,21 @@ final class ServerListViewModel: ServerListViewModelInterface {
     private let serverDataSource: ServerDataSourcing
     private let authenticationDatasource: AuthenticationDataSourcing
     private var sortCriteria: SortCriteria = .alphabetical
+    private let dispatcher: Dispatcher
 
     @Published private var serverList: [Server] = []
 
     @Published var loading: Bool = false
     var serverItems: [ServerItem] { makeServerItem(from: serverList) }
 
-    init(serverDataSource: ServerDataSourcing, authenticationDatasource: AuthenticationDataSourcing, navigator: RootNavigator) {
+    init(serverDataSource: ServerDataSourcing,
+         authenticationDatasource: AuthenticationDataSourcing,
+         navigator: RootNavigator,
+         dispatcher: Dispatcher = DispatchQueue.main) {
         self.serverDataSource = serverDataSource
         self.authenticationDatasource = authenticationDatasource
         self.navigator = navigator
+        self.dispatcher = dispatcher
     }
 
     func fetch() async {
@@ -54,15 +59,17 @@ final class ServerListViewModel: ServerListViewModelInterface {
     func sort() {
         let byDistanceAction = AlertingItem.ActionItem(label: "By Distance", action: sortByDistance)
         let alphabeticallyAction = AlertingItem.ActionItem(label: "Alphabetically", action: sortByName)
-        DispatchQueue.main.async {
+        dispatcher.async {
             self.navigator.present(dialog: AlertingItem(actionItems: byDistanceAction, alphabeticallyAction))
         }
     }
 
-    func logout() {
-        Task { @MainActor in
+    func logout() async {
+        do {
             try await authenticationDatasource.logout()
             navigator.loggedOut()
+        } catch {
+            await MainActor.run { navigator.present(alert: AlertingItem(title: "Error", message: error.localizedDescription)) }
         }
     }
 }

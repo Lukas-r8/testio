@@ -61,6 +61,11 @@
 		4C6CBD27298AEB8D0047A432 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD26298AEB8D0047A432 /* MockNetworkService.swift */; };
 		4C6CBD2A298AFC8B0047A432 /* XCTAssertThrowsAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */; };
 		4C6CBD2C298B004B0047A432 /* MockServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD2B298B004B0047A432 /* MockServerRepository.swift */; };
+		4C6CBD2F298B097A0047A432 /* MockAuthenticationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD2E298B097A0047A432 /* MockAuthenticationDataSource.swift */; };
+		4C6CBD32298B0B690047A432 /* MockRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD31298B0B690047A432 /* MockRootCoordinator.swift */; };
+		4C6CBD34298B11650047A432 /* MockServerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD33298B11650047A432 /* MockServerDataSource.swift */; };
+		4C6CBD36298B1E0D0047A432 /* MockDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */; };
+		4C6CBD39298B21150047A432 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD38298B21150047A432 /* Dispatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +143,11 @@
 		4C6CBD26298AEB8D0047A432 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertThrowsAsync.swift; sourceTree = "<group>"; };
 		4C6CBD2B298B004B0047A432 /* MockServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerRepository.swift; sourceTree = "<group>"; };
+		4C6CBD2E298B097A0047A432 /* MockAuthenticationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationDataSource.swift; sourceTree = "<group>"; };
+		4C6CBD31298B0B690047A432 /* MockRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRootCoordinator.swift; sourceTree = "<group>"; };
+		4C6CBD33298B11650047A432 /* MockServerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerDataSource.swift; sourceTree = "<group>"; };
+		4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatcher.swift; sourceTree = "<group>"; };
+		4C6CBD38298B21150047A432 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +325,8 @@
 		4C6CBCB529833F6D0047A432 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBD30298B0B4B0047A432 /* EntryPoint */,
+				4C6CBD2D298B096B0047A432 /* Models */,
 				4C6CBD25298AEB680047A432 /* Networking */,
 				4C6CBD22298AE78D0047A432 /* Persistence */,
 			);
@@ -390,6 +402,7 @@
 		4C6CBCF1298763360047A432 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C6CBD37298B21080047A432 /* Protocols */,
 				4C6CBD03298894270047A432 /* Components */,
 				4C6CBCE42985AEAD0047A432 /* Styles */,
 				4C6CBCDF2985A3680047A432 /* Extensions */,
@@ -504,8 +517,34 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */,
+				4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C6CBD2D298B096B0047A432 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBD2E298B097A0047A432 /* MockAuthenticationDataSource.swift */,
+				4C6CBD33298B11650047A432 /* MockServerDataSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4C6CBD30298B0B4B0047A432 /* EntryPoint */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBD31298B0B690047A432 /* MockRootCoordinator.swift */,
+			);
+			path = EntryPoint;
+			sourceTree = "<group>";
+		};
+		4C6CBD37298B21080047A432 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CBD38298B21150047A432 /* Dispatcher.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -640,6 +679,7 @@
 			files = (
 				4C6CBCFD29886BF90047A432 /* PersistenceError.swift in Sources */,
 				4C6CBCC629834F370047A432 /* ServerEntity.swift in Sources */,
+				4C6CBD39298B21150047A432 /* Dispatcher.swift in Sources */,
 				4C6CBCD329843CBE0047A432 /* NetworkError.swift in Sources */,
 				4C6CBCB9298347D70047A432 /* Repository.swift in Sources */,
 				4C6CBCB729833FD10047A432 /* LoginView.swift in Sources */,
@@ -682,19 +722,23 @@
 			files = (
 				4C6CBD1C2989B5620047A432 /* AuthenticationDataSourceTests.swift in Sources */,
 				4C6CBD212989BA2C0047A432 /* NetworkServiceTests.swift in Sources */,
+				4C6CBD32298B0B690047A432 /* MockRootCoordinator.swift in Sources */,
 				4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */,
 				4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */,
 				4C6CBD0E2989B36D0047A432 /* LoginViewModelTests.swift in Sources */,
 				4C6CBD1A2989B4EA0047A432 /* ServerDataSourceTests.swift in Sources */,
 				4C6CBD102989B37A0047A432 /* ServerViewModelTests.swift in Sources */,
 				4C6CBD24298AE7B00047A432 /* MockAuthRepository.swift in Sources */,
+				4C6CBD36298B1E0D0047A432 /* MockDispatcher.swift in Sources */,
 				4C6CBD152989B3CB0047A432 /* ServerRepositoryTests.swift in Sources */,
 				4C6CBD1E2989B9920047A432 /* CoreDataStackTests.swift in Sources */,
+				4C6CBD2F298B097A0047A432 /* MockAuthenticationDataSource.swift in Sources */,
 				4C6CBD132989B3BC0047A432 /* AuthRepositoryTests.swift in Sources */,
 				4C6CBD2A298AFC8B0047A432 /* XCTAssertThrowsAsync.swift in Sources */,
 				4C6CBD27298AEB8D0047A432 /* MockNetworkService.swift in Sources */,
 				4C6CBD2C298B004B0047A432 /* MockServerRepository.swift in Sources */,
 				4C6CBD182989B4350047A432 /* RootCoordinatorTests.swift in Sources */,
+				4C6CBD34298B11650047A432 /* MockServerDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,7 +64,9 @@ private extension ServerListView {
 
     var logoutButton: some View {
         Button {
-            viewModel.logout()
+            Task { @MainActor in
+                await viewModel.logout()
+            }
         } label: {
             Label(title: { Image.logout }, icon: { Text("Log out") })
                 .labelStyle(.titleAndIcon)
