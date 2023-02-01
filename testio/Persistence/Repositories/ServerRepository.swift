@@ -13,8 +13,8 @@ final class ServerRepository: Repository {
 
     private let stack: CoreDataStack
 
-    init(stack: CoreDataStack) {
-        self.stack = stack
+    init(coreDataStack: CoreDataStack) {
+        self.stack = coreDataStack
     }
 
     func fetch() async throws -> [Server] {

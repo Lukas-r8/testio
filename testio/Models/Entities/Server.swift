@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Server: Persistable {
+struct Server: Persistable, Equatable {
     let name: String
     let distance: Int
 }

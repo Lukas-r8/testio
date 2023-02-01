@@ -18,7 +18,7 @@ final class DataSourceContainer {
     var serverDataSource: ServerDataSource<ServerRepository> {
         guard let serverDataSource = _serverDataSource else {
             let dataSource = ServerDataSource(networkServicing: networkService,
-                                              serverRepository: ServerRepository(stack: coredataStack))
+                                              serverRepository: ServerRepository(coreDataStack: coredataStack))
             _serverDataSource = dataSource
             return dataSource
         }

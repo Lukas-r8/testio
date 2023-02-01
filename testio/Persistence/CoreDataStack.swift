@@ -9,6 +9,11 @@ import CoreData
 
 final class CoreDataStack {
     static let shared = CoreDataStack()
+    static let modelName = "testio"
+    static let model: NSManagedObjectModel = {
+      let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
+      return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
 
     private let container: NSPersistentContainer
 
@@ -25,7 +30,7 @@ final class CoreDataStack {
     }()
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "testio")
+        container = NSPersistentContainer(name: CoreDataStack.modelName, managedObjectModel: CoreDataStack.model)
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -37,7 +42,7 @@ final class CoreDataStack {
         }
     }
 
-    func write(_ block: @escaping (NSManagedObjectContext) throws -> Void, on context: NSManagedObjectContext? = nil) async throws {
+    func write(on context: NSManagedObjectContext? = nil, _ block: @escaping (NSManagedObjectContext) throws -> Void) async throws {
         let context = context ?? mainContext
         do {
             try await context.perform {

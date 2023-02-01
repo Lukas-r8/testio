@@ -29,4 +29,3 @@ final class KeychainTests: XCTestCase {
         XCTAssertThrowsError(try sut.fetch(AuthResponse.self))
     }
 }
-

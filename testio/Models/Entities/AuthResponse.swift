@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthResponse: SecurelyPersistable {
+struct AuthResponse: SecurelyPersistable, Equatable {
     static let uniqueId: String = "testio.credentials.AuthResponse"
     let token: String
 }
