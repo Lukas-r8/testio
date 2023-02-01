@@ -60,6 +60,7 @@
 		4C6CBD24298AE7B00047A432 /* MockAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD23298AE7B00047A432 /* MockAuthRepository.swift */; };
 		4C6CBD27298AEB8D0047A432 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD26298AEB8D0047A432 /* MockNetworkService.swift */; };
 		4C6CBD2A298AFC8B0047A432 /* XCTAssertThrowsAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */; };
+		4C6CBD2C298B004B0047A432 /* MockServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD2B298B004B0047A432 /* MockServerRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		4C6CBD23298AE7B00047A432 /* MockAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthRepository.swift; sourceTree = "<group>"; };
 		4C6CBD26298AEB8D0047A432 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertThrowsAsync.swift; sourceTree = "<group>"; };
+		4C6CBD2B298B004B0047A432 /* MockServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD23298AE7B00047A432 /* MockAuthRepository.swift */,
+				4C6CBD2B298B004B0047A432 /* MockServerRepository.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				4C6CBD132989B3BC0047A432 /* AuthRepositoryTests.swift in Sources */,
 				4C6CBD2A298AFC8B0047A432 /* XCTAssertThrowsAsync.swift in Sources */,
 				4C6CBD27298AEB8D0047A432 /* MockNetworkService.swift in Sources */,
+				4C6CBD2C298B004B0047A432 /* MockServerRepository.swift in Sources */,
 				4C6CBD182989B4350047A432 /* RootCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

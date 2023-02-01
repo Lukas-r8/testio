@@ -1,5 +1,5 @@
 //
-//  MockAuthRepository.swift
+//  MockServerRepository.swift
 //  testioTests
 //
 //  Created by Lucas Alves Da Silva on 01.02.23.
@@ -7,32 +7,32 @@
 
 @testable import testio
 
-final class MockAuthRepository: Repository {
-    typealias Element = AuthResponse?
+final class MockServerRepository: Repository {
+    typealias Element = [Server]
 
-    var expectedAuthResponse: AuthResponse?
+    var expectedResponse: [Server] = []
     var expectedFailure: PersistenceError?
 
     private(set) var fetchCallCount = 0
 
     private(set) var saveCallCount = 0
-    private(set) var saveCalledWith: AuthResponse?
+    private(set) var saveCalledWith: [Server]?
 
     private(set) var deleteCallCount = 0
 
-    func fetch() async throws -> AuthResponse? {
+    func fetch() async throws -> [Server] {
         fetchCallCount += 1
         if let expectedFailure { throw expectedFailure }
-        return expectedAuthResponse
+        return expectedResponse
     }
 
-    func save(_ item: AuthResponse?) async throws {
+    func save(_ item: [Server]) async throws {
         saveCallCount += 1
         saveCalledWith = item
         if let expectedFailure { throw expectedFailure }
     }
 
-    func delete(_ item: AuthResponse?) async throws {
+    func delete(_ item: [Server]) async throws {
         deleteCallCount += 1
         if let expectedFailure { throw expectedFailure }
     }
