@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class APIClient {
+protocol APIClientInterface: AnyObject {
+    func send<T: Codable>(_ request: Request) async throws -> T
+    func setToken(_ token: String?)
+}
+
+final class APIClient: APIClientInterface {
     private let baseUrl = "https://playground.tesonet.lt/v1"
     private var token: String?
 

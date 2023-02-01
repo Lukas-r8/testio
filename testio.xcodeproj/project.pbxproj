@@ -66,6 +66,7 @@
 		4C6CBD34298B11650047A432 /* MockServerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD33298B11650047A432 /* MockServerDataSource.swift */; };
 		4C6CBD36298B1E0D0047A432 /* MockDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */; };
 		4C6CBD39298B21150047A432 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD38298B21150047A432 /* Dispatcher.swift */; };
+		4C6CBD3B298B26E20047A432 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD3A298B26E20047A432 /* MockAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		4C6CBD33298B11650047A432 /* MockServerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerDataSource.swift; sourceTree = "<group>"; };
 		4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatcher.swift; sourceTree = "<group>"; };
 		4C6CBD38298B21150047A432 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		4C6CBD3A298B26E20047A432 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD26298AEB8D0047A432 /* MockNetworkService.swift */,
+				4C6CBD3A298B26E20047A432 /* MockAPIClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				4C6CBD1A2989B4EA0047A432 /* ServerDataSourceTests.swift in Sources */,
 				4C6CBD102989B37A0047A432 /* ServerViewModelTests.swift in Sources */,
 				4C6CBD24298AE7B00047A432 /* MockAuthRepository.swift in Sources */,
+				4C6CBD3B298B26E20047A432 /* MockAPIClient.swift in Sources */,
 				4C6CBD36298B1E0D0047A432 /* MockDispatcher.swift in Sources */,
 				4C6CBD152989B3CB0047A432 /* ServerRepositoryTests.swift in Sources */,
 				4C6CBD1E2989B9920047A432 /* CoreDataStackTests.swift in Sources */,

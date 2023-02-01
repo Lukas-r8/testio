@@ -12,13 +12,14 @@ protocol NetworkServicing {
 }
 
 final class NetworkService<AuthRepo: Repository> where AuthRepo.Element == AuthResponse? {
-    private let apiClient = APIClient()
+    private let apiClient: APIClientInterface
     private let authRepository: AuthRepo
 
     private var auth: AuthResponse?
 
-    init(authRepository: AuthRepo) {
+    init(authRepository: AuthRepo, apiClient: APIClientInterface = APIClient()) {
         self.authRepository = authRepository
+        self.apiClient = apiClient
     }
 }
 
