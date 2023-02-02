@@ -15,6 +15,11 @@ protocol APIClientInterface: AnyObject {
 final class APIClient: APIClientInterface {
     private let baseUrl = "https://playground.tesonet.lt/v1"
     private var token: String?
+    private let requestSession: RequestSession
+
+    init(requestSession: RequestSession = URLSession.shared) {
+        self.requestSession = requestSession
+    }
 
     func send<T: Codable>(_ request: Request) async throws -> T {
         guard let url = URL(string: baseUrl) else { throw NetworkError.badRequest  }
@@ -24,7 +29,7 @@ final class APIClient: APIClientInterface {
         request.configure(&urlRequest)
 
         do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            let (data, response) = try await requestSession.data(for: urlRequest)
             if let error = check(response) { throw error }
             return try JSONDecoder().decode(T.self, from: data)
         } catch let error as NetworkError {
@@ -48,7 +53,7 @@ private extension APIClient {
         case 500: return .serverError
         case 404: return .notFound
         case 200 ... 299: return nil
-        default: return .unknown(description: response.description)
+        default: return .unknown(description: "Failed with status code \(statusCode)")
         }
     }
 }

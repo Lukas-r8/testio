@@ -67,6 +67,9 @@
 		4C6CBD36298B1E0D0047A432 /* MockDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */; };
 		4C6CBD39298B21150047A432 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD38298B21150047A432 /* Dispatcher.swift */; };
 		4C6CBD3B298B26E20047A432 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD3A298B26E20047A432 /* MockAPIClient.swift */; };
+		4C6CBD3D298B321B0047A432 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD3C298B321B0047A432 /* APIClientTests.swift */; };
+		4C6CBD3F298B34080047A432 /* RequestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD3E298B34080047A432 /* RequestSession.swift */; };
+		4C6CBD41298B342D0047A432 /* MockRequestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBD40298B342D0047A432 /* MockRequestSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +153,9 @@
 		4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatcher.swift; sourceTree = "<group>"; };
 		4C6CBD38298B21150047A432 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		4C6CBD3A298B26E20047A432 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		4C6CBD3C298B321B0047A432 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		4C6CBD3E298B34080047A432 /* RequestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSession.swift; sourceTree = "<group>"; };
+		4C6CBD40298B342D0047A432 /* MockRequestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequestSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD202989BA2C0047A432 /* NetworkServiceTests.swift */,
+				4C6CBD3C298B321B0047A432 /* APIClientTests.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -521,6 +528,7 @@
 			children = (
 				4C6CBD29298AFC8B0047A432 /* XCTAssertThrowsAsync.swift */,
 				4C6CBD35298B1E0D0047A432 /* MockDispatcher.swift */,
+				4C6CBD40298B342D0047A432 /* MockRequestSession.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -546,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6CBD38298B21150047A432 /* Dispatcher.swift */,
+				4C6CBD3E298B34080047A432 /* RequestSession.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -715,6 +724,7 @@
 				4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */,
 				4C6CBCE32985A3970047A432 /* View+Presentation.swift in Sources */,
 				4C6CBCF6298865700047A432 /* AppError.swift in Sources */,
+				4C6CBD3F298B34080047A432 /* RequestSession.swift in Sources */,
 				4C6CBCDE298465630047A432 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,7 +735,9 @@
 			files = (
 				4C6CBD1C2989B5620047A432 /* AuthenticationDataSourceTests.swift in Sources */,
 				4C6CBD212989BA2C0047A432 /* NetworkServiceTests.swift in Sources */,
+				4C6CBD41298B342D0047A432 /* MockRequestSession.swift in Sources */,
 				4C6CBD32298B0B690047A432 /* MockRootCoordinator.swift in Sources */,
+				4C6CBD3D298B321B0047A432 /* APIClientTests.swift in Sources */,
 				4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */,
 				4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */,
 				4C6CBD0E2989B36D0047A432 /* LoginViewModelTests.swift in Sources */,
