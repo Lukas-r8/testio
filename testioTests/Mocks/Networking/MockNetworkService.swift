@@ -14,7 +14,7 @@ final class MockNetworkService<Result: Codable>: NetworkServicing {
     var expectedFetchResult: Result?
     var expectedFailure: NetworkError?
 
-    func fetch<T: Codable>(_ request: Request) async throws -> T {
+    func send<T: Codable>(_ request: Request) async throws -> T {
         fetchCallCount += 1
         fetchCalledWith = request
 

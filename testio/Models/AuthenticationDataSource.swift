@@ -38,7 +38,7 @@ final class AuthenticationDataSource<AuthRepo: Repository>: AuthenticationDataSo
     func authenticate(username: String, password: String) async throws {
         do {
             let body = try JSONEncoder().encode(["username": username, "password": password])
-            let response: AuthResponse = try await networkServicing.fetch(PostRequest(body: body, path: "/tokens"))
+            let response: AuthResponse = try await networkServicing.send(PostRequest(body: body, path: "/tokens"))
             try await authRepository.save(response)
             _response.send(response)
         } catch {

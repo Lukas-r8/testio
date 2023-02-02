@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkServicing {
-    func fetch<T: Codable>(_ request: Request) async throws -> T
+    func send<T: Codable>(_ request: Request) async throws -> T
 }
 
 final class NetworkService<AuthRepo: Repository> where AuthRepo.Element == AuthResponse? {
@@ -24,7 +24,7 @@ final class NetworkService<AuthRepo: Repository> where AuthRepo.Element == AuthR
 }
 
 extension NetworkService: NetworkServicing {
-    func fetch<T: Codable>(_ request: Request) async throws -> T {
+    func send<T: Codable>(_ request: Request) async throws -> T {
         if let authResponse = try? await authRepository.fetch() {
             apiClient.setToken(authResponse.token)
         }

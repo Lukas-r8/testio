@@ -30,7 +30,7 @@ final class ServerDataSource<ServerRepo: Repository>: ServerDataSourcing, ErrorM
                 self.cache = storedItems
                 return storedItems
             }
-            let downloadedItems: [Server] = try await networkServicing.fetch(GetRequest(path: "/servers"))
+            let downloadedItems: [Server] = try await networkServicing.send(GetRequest(path: "/servers"))
             try await serverRepository.delete(storedItems)
             try await serverRepository.save(downloadedItems)
             self.cache = downloadedItems

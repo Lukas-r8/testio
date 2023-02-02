@@ -32,7 +32,7 @@ final class NetworkServiceTests: XCTestCase {
         authRepository.expectedAuthResponse = AuthResponse(token: "mock_token")
 
         let mockBody = try JSONEncoder().encode("mock_request_body")
-        let response: [Server] = try await sut.fetch(PostRequest(body: mockBody, path: "/mock"))
+        let response: [Server] = try await sut.send(PostRequest(body: mockBody, path: "/mock"))
 
         XCTAssertEqual(response, [Server(name: "test", distance: 1)])
         XCTAssertEqual(authRepository.fetchCallCount, 1)
@@ -54,7 +54,7 @@ final class NetworkServiceTests: XCTestCase {
         let mockBody = try! JSONEncoder().encode("mock_request_body")
         let postRequest = PostRequest(body: mockBody, path: "/mock")
         let errorThrown = await XCTAssertThrowsAsync(try await { [self] in
-            let server: [Server] = try await self.sut.fetch(postRequest)
+            let server: [Server] = try await self.sut.send(postRequest)
             return server
         }(), ofType: NetworkError.self)
         XCTAssertEqual(errorThrown, .unauthorized)
