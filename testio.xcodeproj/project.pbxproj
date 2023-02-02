@@ -13,7 +13,6 @@
 		4C6CBC8429833BC90047A432 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8329833BC90047A432 /* Preview Assets.xcassets */; };
 		4C6CBC8629833BC90047A432 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8529833BC90047A432 /* CoreDataStack.swift */; };
 		4C6CBC8929833BC90047A432 /* testio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC8729833BC90047A432 /* testio.xcdatamodeld */; };
-		4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC9229833BCA0047A432 /* testioTests.swift */; };
 		4C6CBC9D29833BCA0047A432 /* testioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC9C29833BCA0047A432 /* testioUITests.swift */; };
 		4C6CBC9F29833BCA0047A432 /* testioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBC9E29833BCA0047A432 /* testioUITestsLaunchTests.swift */; };
 		4C6CBCB029833EBE0047A432 /* ServerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CBCAF29833EBE0047A432 /* ServerListView.swift */; };
@@ -98,7 +97,6 @@
 		4C6CBC8529833BC90047A432 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		4C6CBC8829833BC90047A432 /* testio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testio.xcdatamodel; sourceTree = "<group>"; };
 		4C6CBC8E29833BCA0047A432 /* testioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C6CBC9229833BCA0047A432 /* testioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioTests.swift; sourceTree = "<group>"; };
 		4C6CBC9829833BCA0047A432 /* testioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6CBC9C29833BCA0047A432 /* testioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioUITests.swift; sourceTree = "<group>"; };
 		4C6CBC9E29833BCA0047A432 /* testioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				4C6CBD0A2989B3310047A432 /* ViewModels */,
 				4C6CBCE92986CB460047A432 /* Persistence */,
 				4C6CBCB429833F5F0047A432 /* Model */,
-				4C6CBC9229833BCA0047A432 /* testioTests.swift */,
 			);
 			path = testioTests;
 			sourceTree = "<group>";
@@ -738,7 +735,6 @@
 				4C6CBD41298B342D0047A432 /* MockRequestSession.swift in Sources */,
 				4C6CBD32298B0B690047A432 /* MockRootCoordinator.swift in Sources */,
 				4C6CBD3D298B321B0047A432 /* APIClientTests.swift in Sources */,
-				4C6CBC9329833BCA0047A432 /* testioTests.swift in Sources */,
 				4C6CBCEB2986CB560047A432 /* KeychainTests.swift in Sources */,
 				4C6CBD0E2989B36D0047A432 /* LoginViewModelTests.swift in Sources */,
 				4C6CBD1A2989B4EA0047A432 /* ServerDataSourceTests.swift in Sources */,
