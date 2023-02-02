@@ -67,18 +67,3 @@ private extension LoginView {
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
-
-final class MockLoginViewModel: LoginViewModelInterface {
-    var username: String = "testing"
-    var password: String = "some password"
-    var loading: Bool = true
-    var isLoginActive: Bool = false
-
-    func login() async { }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(viewModel: MockLoginViewModel())
-    }
-}
