@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct LoginView<ViewModel: LoginViewModelInterface>: View {
     @ObservedObject var viewModel: ViewModel
@@ -35,7 +34,6 @@ private extension LoginView {
                 .padding(.horizontal)
 
             makeTextField(text: $viewModel.password, icon: .lock, placeholder: "Password", secure: true)
-
                 .padding(.horizontal)
 
             Button("Log in") {
