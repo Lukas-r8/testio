@@ -67,7 +67,7 @@ final class ServerListViewModel: ServerListViewModelInterface {
     func logout() async {
         do {
             try await authenticationDatasource.logout()
-            navigator.loggedOut()
+            await MainActor.run { navigator.loggedOut() }
         } catch {
             await MainActor.run { navigator.present(alert: AlertingItem(title: "Error", message: error.localizedDescription)) }
         }
